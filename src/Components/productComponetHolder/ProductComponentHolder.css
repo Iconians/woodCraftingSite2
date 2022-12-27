@@ -1,0 +1,7 @@
+.component-holder-wrapper {
+  display: flex;
+  border: 3px solid black;
+  width: 95%;
+  padding: 20px;
+  margin: 20px 0;
+}

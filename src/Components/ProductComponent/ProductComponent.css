@@ -1,0 +1,9 @@
+.product-holder-wrapper {
+  width: 300px;
+  height: 300px;
+}
+
+.img-wrapper > img {
+  width: 200px;
+  height: 200px;
+}

@@ -1,0 +1,74 @@
+{
+  "users": [
+    {
+      "id": 0,
+      "username": "username",
+      "name": "name",
+      "password": "password"
+    }
+  ],
+
+  "carvings": [
+    {
+      "id": 0,
+      "carvingName": "carving",
+      "userId": "userid",
+      "carverName": "users name",
+      "availableToPurchase": false,
+      "story": "story of product",
+      "type": "handCarved",
+      "price": null
+    },
+    {
+      "id": 1,
+      "carvingName": "carving",
+      "userId": "userid",
+      "carverName": "users name",
+      "availableToPurchase": false,
+      "story": "story of product",
+      "type": "machineCarved",
+      "price": null
+    }
+  ],
+
+  "favorites": [
+    {
+      "id": 0,
+      "userId": "userId",
+      "carvingId": "carvingId"
+    }
+  ],
+
+  "purchases": [
+    {
+      "id": 0,
+      "userId": "userId",
+      "carvingId": "carvingId",
+      "shipping": [
+        {
+          "name": "name",
+          "address": "address",
+          "city": "city",
+          "state": "state",
+          "zip": 7655765
+        }
+      ],
+      "paymentInfo": [
+        {
+          "cardType": "visa",
+          "cardNumbers": 1234567890123456789,
+          "expDate": "11/28",
+          "billingAddress": [
+            {
+              "name": "name",
+              "address": "address",
+              "city": "city",
+              "state": "state",
+              "zip": 7655765
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
