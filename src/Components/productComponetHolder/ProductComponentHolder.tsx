@@ -1,25 +1,24 @@
 import React from "react";
+import { carvingArray } from "../../interfaces";
 import { ProductHolder } from "../ProductComponent/ProductComponent";
 import "./ProductComponentHolder.css";
 
 interface props {
-  key: number;
   h3: string;
-  array: {
-    img: string;
-    type: string;
-  }[];
+  array: carvingArray[];
 }
 
-export const ProductComponentHolder = ({ h3, key, array }: props) => {
+export const ProductComponentHolder = ({ h3, array }: props) => {
   return (
-    <div className="component-holder-wrapper" key={key}>
-      <div>
+    <div className="component-holder-wrapper">
+      <div className="h3-wrapper">
         <h3>{h3}</h3>
       </div>
-      {array.map((carving) => (
-        <ProductHolder img={carving.img} />
-      ))}
+      <div className="product-holder-container">
+        {array.map((carving) => (
+          <ProductHolder img={carving.image} id={carving.id} key={carving.id} />
+        ))}
+      </div>
     </div>
   );
 };

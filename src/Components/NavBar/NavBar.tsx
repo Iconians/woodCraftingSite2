@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { NavAcctBtn } from "../NavAcctBtn/NavAcctBtn";
 import { NavButtons } from "../NavButtons/NavButtons";
+import "./Navbar.css";
 
 export const NavBar = () => {
   const [loggedIn, setLoggedIn] = useState<boolean>(false);

@@ -11,6 +11,7 @@
   "carvings": [
     {
       "id": 0,
+      "image": "https://upload.wikimedia.org/wikipedia/commons/a/ab/Bioengineered_obese_mouse%2C_Aberdeen%2C_Scotland%2C_1998_Wellcome_L0060083.jpg",
       "carvingName": "carving",
       "userId": "userid",
       "carverName": "users name",
@@ -21,10 +22,11 @@
     },
     {
       "id": 1,
+      "image": "https://upload.wikimedia.org/wikipedia/commons/a/ab/Bioengineered_obese_mouse%2C_Aberdeen%2C_Scotland%2C_1998_Wellcome_L0060083.jpg",
       "carvingName": "carving",
       "userId": "userid",
       "carverName": "users name",
-      "availableToPurchase": false,
+      "availableToPurchase": true,
       "story": "story of product",
       "type": "machineCarved",
       "price": null

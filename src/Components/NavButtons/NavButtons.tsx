@@ -1,6 +1,8 @@
+import "./NavButtons.css";
+
 export const NavButtons = () => (
   <div className="nav-btn-wrapper">
-    <div>
+    <div className="button-div">
       <button>Sign In</button>
       <button>Create Account</button>
     </div>

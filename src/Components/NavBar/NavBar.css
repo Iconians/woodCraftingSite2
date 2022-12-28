@@ -1,0 +1,14 @@
+.navbar-wrapper {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: saddlebrown;
+  height: 40px;
+  color: white;
+  border-radius: 10px;
+}
+
+.brand-div {
+  font-size: 30px;
+  font-style: italic;
+}
