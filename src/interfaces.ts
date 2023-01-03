@@ -9,4 +9,4 @@ export interface carvingArray {
   type: string
   price: null | string
 
-}[]
+}

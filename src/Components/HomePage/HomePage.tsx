@@ -1,6 +1,4 @@
-import { useEffect, useState } from "react";
-import { fetchCarvings } from "../../fetches/getCarvings";
-import { carvingArray } from "../../interfaces";
+import { useCarvingContext } from "../../providers/carvings.provider";
 import { NavBar } from "../NavBar/NavBar";
 import { ProductComponentHolder } from "../productComponetHolder/ProductComponentHolder";
 
@@ -16,17 +14,14 @@ const componentHolder = [
 ];
 
 export const HomePage = () => {
-  const [carvingArry, setCarvingArray] = useState<carvingArray[]>([]);
-  const handCarved = carvingArry.filter(
+  const { carvingArray } = useCarvingContext();
+  const handCarved = carvingArray.filter(
     (carving) => carving.type === "handCarved"
   );
-  const machineCarved = carvingArry.filter(
+  const machineCarved = carvingArray.filter(
     (carving) => carving.type !== "handCarved"
   );
 
-  useEffect(() => {
-    fetchCarvings().then((data) => setCarvingArray(data));
-  }, []);
   return (
     <div className="site-wrapper">
       <NavBar />

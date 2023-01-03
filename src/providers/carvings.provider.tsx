@@ -1,26 +1,33 @@
-import React, { createContext, useContext, useState, useEffect } from "react";
+import React, {
+  createContext,
+  useContext,
+  useState,
+  useEffect,
+  ReactNode,
+} from "react";
 import { fetchCarvings } from "../fetches/getCarvings";
 import { carvingArray } from "../interfaces";
 
 interface CarvingContextInterface {
-  carvingArry: carvingArray[];
+  carvingArray: carvingArray[];
+  children?: ReactNode;
 }
 
-const CarvingContext = createContext<CarvingContextInterface>({});
+const CarvingContext = createContext({} as CarvingContextInterface);
 
-export const CarvingProvider = ({ children }) => {
-  const [carvingArry, setCarvingArray] = useState<carvingArray[]>([]);
+export const CarvingProvider = ({ children }: CarvingContextInterface) => {
+  const [carvingArray, setCarvingArray] = useState<carvingArray[]>([]);
 
   useEffect(() => {
     fetchCarvings().then((data) => setCarvingArray(data));
   }, []);
 
   return (
-    <CarvingContext.Provider>
-      value =
-      {{
-        carvingArry,
+    <CarvingContext.Provider
+      value={{
+        carvingArray,
       }}
+    >
       {children}
     </CarvingContext.Provider>
   );
@@ -29,6 +36,6 @@ export const CarvingProvider = ({ children }) => {
 export const useCarvingContext = () => {
   const context = useContext(CarvingContext);
   return {
-    carvingArry: context.carvingArry,
+    carvingArray: context.carvingArray,
   };
 };

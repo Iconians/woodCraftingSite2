@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "./ProductComponent.css";
 
 interface props {
@@ -11,7 +12,10 @@ export const ProductHolder = ({ img, id }: props) => (
       <img src={img} alt="" />
     </div>
     <div>
-      <button>More Details</button>
+      {/* <button>More Details</button> */}
+      <Link to="../ProductPage/ProductPage/:productPage">
+        <p>More Details</p>
+      </Link>
     </div>
   </div>
 );
