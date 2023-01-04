@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
-import "./ProductComponent.css";
+import "./ProductHolder.css";
 
 interface props {
   img: string;
