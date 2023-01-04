@@ -1,28 +1,27 @@
 import "./App.css";
 import { HomePage } from "./Components/HomePage/HomePage";
 import { CarvingProvider } from "./providers/carvings.provider";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import { ProductPage } from "./Components/ProductPage/ProductPage";
+import { SignInPage } from "./Components/SignInPage/SignInPage";
 
 function App() {
-  const router = createBrowserRouter([
-    {
-      path: "/",
-      element: <HomePage />,
-      children: [
-        {
-          path: "Component/ProductPage/ProductPage/:productPageId",
-          element: <ProductPage />,
-        },
-      ],
-    },
-  ]);
   return (
     <div className="App">
       <CarvingProvider carvingArray={[]}>
-        <RouterProvider router={router} />
-        {/* <Route index element={<HomePage />} />
-        <Route path="productPage" element={<ProductPage />} /> */}
+        <Router>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route
+              path="/Component/ProductPage/ProductPage"
+              element={<ProductPage />}
+            />
+            <Route
+              path="/Component/SignInPage/SignInPage"
+              element={<SignInPage />}
+            />
+          </Routes>
+        </Router>
       </CarvingProvider>
     </div>
   );

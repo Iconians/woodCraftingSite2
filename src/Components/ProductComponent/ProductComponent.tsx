@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./ProductComponent.css";
 
 interface props {
@@ -6,16 +6,30 @@ interface props {
   id: number;
 }
 
-export const ProductHolder = ({ img, id }: props) => (
-  <div className="product-holder-wrapper" key={id}>
-    <div className="img-wrapper">
-      <img src={img} alt="" />
+export const ProductHolder = ({ img, id }: props) => {
+  const navigate = useNavigate();
+  const openProduct = (id: number) => {
+    navigate("/Component/ProductPage/ProductPage", {
+      state: {
+        productId: id,
+      },
+    });
+  };
+  return (
+    <div className="product-holder-wrapper" key={id}>
+      <div className="img-wrapper">
+        <img src={img} alt="" />
+      </div>
+      <div>
+        <Link
+          to="/Component/ProductPage/ProductPage"
+          state={{
+            productId: id,
+          }}
+        >
+          <p>More Details</p>
+        </Link>
+      </div>
     </div>
-    <div>
-      {/* <button>More Details</button> */}
-      <Link to="../ProductPage/ProductPage/:productPage">
-        <p>More Details</p>
-      </Link>
-    </div>
-  </div>
-);
+  );
+};
