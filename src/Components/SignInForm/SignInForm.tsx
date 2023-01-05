@@ -1,4 +1,4 @@
-export const SignInForm = () => {
+export const SignInForm = ({ changeForm }: any) => {
   return (
     <div>
       <div className="h2-wrapper">
@@ -12,6 +12,9 @@ export const SignInForm = () => {
           <input name="password" type="password" placeholder="Password" />
           <input type="submit" value="Sign In" />
         </form>
+        <div>
+          <button onClick={changeForm}>Create Account</button>
+        </div>
       </div>
     </div>
   );
