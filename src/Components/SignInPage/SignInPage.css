@@ -1,0 +1,25 @@
+.h2-wrapper {
+  text-align: center;
+}
+
+.form-wrapper {
+  width: 600px;
+  margin: auto;
+}
+
+.form {
+  display: grid;
+
+}
+
+.form > label {
+  margin-bottom: 5px;
+}
+
+form > input {
+  height: 30px;
+  margin-bottom: 15px;
+  outline-color: saddlebrown;
+  border-radius: 20px;
+  border-color: sandybrown;
+}

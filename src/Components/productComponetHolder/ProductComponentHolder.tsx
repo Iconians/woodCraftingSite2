@@ -1,6 +1,6 @@
 import React from "react";
 import { carvingArray } from "../../interfaces";
-import { ProductHolder } from "../ProductComponent/ProductHolder";
+import { ProductHolder } from "../ProductHolder/ProductHolder";
 import "./ProductComponentHolder.css";
 
 interface props {
