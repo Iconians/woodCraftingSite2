@@ -8,8 +8,7 @@ export const NavBar = () => {
   return (
     <div className="navbar-wrapper">
       <div className="brand-div">WoodCrafting Hobby Site</div>
-      <div className="btns"></div>
-      {loggedIn ? <NavAcctBtn /> : <NavButtons />}
+      <div className="btns">{loggedIn ? <NavAcctBtn /> : <NavButtons />}</div>
     </div>
   );
 };

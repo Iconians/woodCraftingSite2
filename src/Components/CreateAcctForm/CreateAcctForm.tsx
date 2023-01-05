@@ -1,3 +1,6 @@
+import { faEye } from "@fortawesome/free-regular-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 export const CreateAcctForm = () => {
   return (
     <div>
@@ -7,6 +10,7 @@ export const CreateAcctForm = () => {
         </div>
         <div className="form-wrapper">
           <form action="" className="form">
+            <FontAwesomeIcon icon={faEye} />
             <label htmlFor="name">Name</label>
             <input name="name" type="text" placeholder="Name" />
             <label htmlFor="email">Email</label>

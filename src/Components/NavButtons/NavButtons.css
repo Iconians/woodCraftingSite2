@@ -1,3 +1,7 @@
+.nav-btn-wrapper {
+  display: flex;
+}
+
 .button-div > button {
   margin-right: 20px;
   outline: none;
@@ -18,4 +22,9 @@
   cursor: pointer;
   text-decoration: none;
   font-style: italic;
+}
+
+.cart-icon {
+  margin-left: 15px;
+  font-size: 22px;
 }
