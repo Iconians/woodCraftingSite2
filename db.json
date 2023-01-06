@@ -5,9 +5,20 @@
       "username": "username",
       "name": "name",
       "password": "password"
+    },
+    {
+      "name": "cl",
+      "email": "clay@gmail.com",
+      "password": "password",
+      "id": 1
+    },
+    {
+      "name": "hi",
+      "email": "cay@mail.com",
+      "password": "password",
+      "id": 2
     }
   ],
-
   "carvings": [
     {
       "id": 0,
@@ -32,7 +43,6 @@
       "price": "$59.00"
     }
   ],
-
   "favorites": [
     {
       "id": 0,
@@ -40,7 +50,6 @@
       "carvingId": "carvingId"
     }
   ],
-
   "purchases": [
     {
       "id": 0,
@@ -58,7 +67,7 @@
       "paymentInfo": [
         {
           "cardType": "visa",
-          "cardNumbers": 1234567890123456789,
+          "cardNumbers": 1234567890123456800,
           "expDate": "11/28",
           "billingAddress": [
             {

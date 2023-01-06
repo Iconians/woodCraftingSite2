@@ -1,10 +1,10 @@
-import { useState } from "react";
+import { useAuthContext } from "../../providers/auth.provider";
 import { NavAcctBtn } from "../NavAcctBtn/NavAcctBtn";
 import { NavButtons } from "../NavButtons/NavButtons";
 import "./Navbar.css";
 
 export const NavBar = () => {
-  const [loggedIn, setLoggedIn] = useState<boolean>(false);
+  const { loggedIn } = useAuthContext();
   return (
     <div className="navbar-wrapper">
       <div className="brand-div">WoodCrafting Hobby Site</div>
