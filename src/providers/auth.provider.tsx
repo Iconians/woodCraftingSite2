@@ -39,12 +39,17 @@ export const AuthProvider = ({ children }: AuthContextInterface) => {
   const signinUser = (email: string, password: string) => {
     fetchUsers().then((data) => {
       const findAccount = data.find((item: any) => item.email === email);
-      console.log(password);
-      if (findAccount.password === password) {
-        localStorage.setItem("user", JSON.stringify(findAccount));
-        setUser(findAccount);
-        setLoggedIn(true);
-        toast.success("signed In");
+      if (findAccount !== undefined) {
+        if (findAccount.password === password) {
+          localStorage.setItem("user", JSON.stringify(findAccount));
+          setUser(findAccount);
+          setLoggedIn(true);
+          toast.success("signed In");
+        } else {
+          toast.error("Incorrect Password");
+        }
+      } else {
+        toast.error("No Account Found");
       }
     });
   };

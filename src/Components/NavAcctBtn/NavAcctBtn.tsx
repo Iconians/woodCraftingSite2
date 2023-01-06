@@ -5,9 +5,7 @@ export const NavAcctBtn = () => {
   return (
     <div className="acct-btn-wrapper">
       <select name="accountSelect" id="accountselect">
-        <option value="username" disabled>
-          {user.name}
-        </option>
+        <option value="username">{user.name}</option>
         <option value="favorites">Favorites</option>
         <option value="Account">Account</option>
         <option value="Sign Out">Sign Out</option>
