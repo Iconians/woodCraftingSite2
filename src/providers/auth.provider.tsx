@@ -1,4 +1,4 @@
-import { Context, createContext, ReactNode, useContext, useState } from "react";
+import { createContext, ReactNode, useContext, useState } from "react";
 import { addUserFetch } from "../fetches/addUser";
 
 interface AuthContextInterface {
