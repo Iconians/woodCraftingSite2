@@ -7,12 +7,14 @@ import {
 } from "react";
 import { addUserFetch } from "../fetches/addUser";
 import { toast } from "react-hot-toast";
+import { fetchUsers } from "../fetches/fetchUsers";
 
 interface AuthContextInterface {
   children?: ReactNode;
   user: any;
   loggedIn: boolean;
   createUser: any;
+  signinUser: any;
 }
 
 const AuthContext = createContext({} as AuthContextInterface);
@@ -34,12 +36,24 @@ export const AuthProvider = ({ children }: AuthContextInterface) => {
       .then((data: any) => console.log(data));
   };
 
+  const signinUser = (email: string, password: string) => {
+    fetchUsers().then((data) => {
+      const findAccount = data.find((item: any) => item.email === email);
+      console.log(password);
+      if (findAccount.password === password) {
+        localStorage.setItem("user", JSON.stringify(findAccount));
+        setUser(findAccount);
+        setLoggedIn(true);
+        toast.success("signed In");
+      }
+    });
+  };
+
   useEffect(() => {
     const userSignIn = localStorage.getItem("user");
     if (userSignIn) {
       setUser(JSON.parse(userSignIn));
       setLoggedIn(true);
-      console.log(JSON.parse(userSignIn));
     }
   }, []);
 
@@ -49,6 +63,7 @@ export const AuthProvider = ({ children }: AuthContextInterface) => {
         user,
         loggedIn,
         createUser,
+        signinUser,
       }}
     >
       {children}
@@ -62,5 +77,6 @@ export const useAuthContext = () => {
     user: context.user,
     loggedIn: context.loggedIn,
     createUser: context.createUser,
+    signinUser: context.signinUser,
   };
 };

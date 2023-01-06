@@ -2,12 +2,7 @@ import { faEye } from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
 import { useAuthContext } from "../../providers/auth.provider";
-
-// interface captureInputInterface {
-//   target: any;
-//   name: string;
-//   value: string;
-// }
+import { toast } from "react-hot-toast";
 
 export const CreateAcctForm = () => {
   const { createUser } = useAuthContext();
@@ -42,7 +37,7 @@ export const CreateAcctForm = () => {
       };
       createUser(newUser);
     } else {
-      console.log("passwords don't match");
+      toast.error("passwords don't match");
     }
   };
   return (
