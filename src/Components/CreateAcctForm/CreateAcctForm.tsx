@@ -12,13 +12,13 @@ export const CreateAcctForm = () => {
   const [confirmPassword, setConfirmPassword] = useState<string>("");
 
   const captureInput = ({ target: { name, value } }: any) => {
-    console.log(name, value);
     switch (name) {
       case "formName":
         setName(value);
         break;
       case "email":
         setEmail(value);
+        break;
       case "password":
         setPassword(value);
         break;

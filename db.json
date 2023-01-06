@@ -35,6 +35,18 @@
       "email": "email@email.com",
       "password": "password",
       "id": 5
+    },
+    {
+      "name": "hi",
+      "email": "email@email.com",
+      "password": "password",
+      "id": 6
+    },
+    {
+      "name": "hi",
+      "email": "gmail@email.com",
+      "password": "password",
+      "id": 7
     }
   ],
   "carvings": [

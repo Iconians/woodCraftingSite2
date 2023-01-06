@@ -23,17 +23,24 @@ export const AuthProvider = ({ children }: AuthContextInterface) => {
   const [user, setUser] = useState<{}>({});
   const [loggedIn, setLoggedIn] = useState<boolean>(false);
 
-  const createUser = (user: object) => {
-    addUserFetch(user)
-      .then((response) => {
-        if (response.ok) {
-          localStorage.setItem("user", JSON.stringify(user));
-          setUser(user);
-          setLoggedIn(true);
-          toast.success("Created and Account and Logged In");
-        }
-      })
-      .then((data: any) => console.log(data));
+  const createUser = (user: any) => {
+    fetchUsers().then((data) => {
+      const checkForUsers = data.find((item: any) => item.email === user.email);
+      if (!checkForUsers) {
+        addUserFetch(user)
+          .then((response) => {
+            if (response.ok) {
+              localStorage.setItem("user", JSON.stringify(user));
+              setUser(user);
+              setLoggedIn(true);
+              toast.success("Created and Account and Logged In");
+            }
+          })
+          .then((data: any) => console.log(data));
+      } else {
+        toast.error("Account already exist with this email");
+      }
+    });
   };
 
   const signinUser = (email: string, password: string) => {
