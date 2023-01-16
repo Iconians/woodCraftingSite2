@@ -4,6 +4,38 @@ import { useState } from "react";
 import { useAuthContext } from "../../providers/auth.provider";
 import { toast } from "react-hot-toast";
 
+const formData = [
+  {
+    labelName: "name",
+    labeltext: "Name",
+    inputName: "formName",
+    type: "text",
+    placeHolder: "Name",
+  },
+  {
+    labelName: "email",
+    labeltext: "Email",
+    inputName: "email",
+    type: "email",
+    placeHolder: "Email",
+  },
+  {
+    labelName: "password",
+    labeltext: "Password",
+    inputName: "password",
+    type: "password",
+    placeHolder: "Password",
+    id: "eye",
+  },
+  {
+    labelName: "confirmpassword",
+    labeltext: "Confirm Password",
+    inputName: "confirmpassword",
+    type: "password",
+    placeHolder: "Confirm Password",
+  },
+];
+
 export const CreateAcctForm = () => {
   const { createUser } = useAuthContext();
   const [name, setName] = useState<string>("");
@@ -40,6 +72,16 @@ export const CreateAcctForm = () => {
       toast.error("passwords don't match");
     }
   };
+
+  const handleEye = () => {
+    const input: any = document.getElementById("eye");
+    if (input.type === "password") {
+      input.type = "text";
+    } else {
+      input.type = "password";
+    }
+  };
+
   return (
     <div>
       <div>
@@ -55,36 +97,28 @@ export const CreateAcctForm = () => {
               newUser();
             }}
           >
-            <FontAwesomeIcon icon={faEye} />
-            <label htmlFor="name">Name</label>
-            <input
-              name="formName"
-              type="text"
-              placeholder="Name"
-              onChange={captureInput}
-            />
-            <label htmlFor="email">Email</label>
-            <input
-              name="email"
-              type="email"
-              placeholder="Email"
-              onChange={captureInput}
-            />
-            <label htmlFor="password">Password</label>
-            <input
-              name="password"
-              type="password"
-              placeholder="Password"
-              onChange={captureInput}
-            />
-            <label htmlFor="confirmpassword">Confirm Password</label>
-            <input
-              name="confirmpassword"
-              type="password"
-              placeholder="Confirm Password"
-              onChange={captureInput}
-            />
-            <input type="submit" value="Create Account" />
+            <>
+              {formData.map((input) => (
+                <label htmlFor={input.labelName}>
+                  {input.labeltext}
+                  <input
+                    id={input.id}
+                    name={input.inputName}
+                    type={input.type}
+                    placeholder={input.placeHolder}
+                    onChange={captureInput}
+                  />
+                  {input.inputName === "password" ? (
+                    <FontAwesomeIcon
+                      icon={faEye}
+                      className="eye"
+                      onClick={handleEye}
+                    />
+                  ) : null}
+                </label>
+              ))}
+              <input type="submit" value="Create Account" />
+            </>
           </form>
         </div>
       </div>

@@ -14,12 +14,21 @@
 
 .form > label {
   margin-bottom: 5px;
+  position: relative;
 }
 
-form > input {
+form > label > input, form > input {
   height: 30px;
   margin-bottom: 15px;
   outline-color: saddlebrown;
   border-radius: 20px;
   border-color: sandybrown;
+  width: 100%;
+}
+
+.eye {
+  position: absolute;
+  right: 10px;
+  top: 28px;
+  cursor: pointer;
 }
