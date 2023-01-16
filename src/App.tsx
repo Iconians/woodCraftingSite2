@@ -11,7 +11,7 @@ function App() {
   return (
     <div className="App">
       <CarvingProvider carvingArray={[]}>
-        <AuthProvider user loggedIn createUser signinUser>
+        <AuthProvider user loggedIn createUser signinUser signoutUser>
           <Toaster />
           <Router>
             <Routes>

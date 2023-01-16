@@ -15,6 +15,7 @@ interface AuthContextInterface {
   loggedIn: boolean;
   createUser: any;
   signinUser: any;
+  signoutUser: any;
 }
 
 const AuthContext = createContext({} as AuthContextInterface);
@@ -61,6 +62,12 @@ export const AuthProvider = ({ children }: AuthContextInterface) => {
     });
   };
 
+  const signoutUser = () => {
+    setUser({});
+    setLoggedIn(false);
+    localStorage.removeItem("user");
+  };
+
   useEffect(() => {
     const userSignIn = localStorage.getItem("user");
     if (userSignIn) {
@@ -76,6 +83,7 @@ export const AuthProvider = ({ children }: AuthContextInterface) => {
         loggedIn,
         createUser,
         signinUser,
+        signoutUser,
       }}
     >
       {children}
@@ -90,5 +98,6 @@ export const useAuthContext = () => {
     loggedIn: context.loggedIn,
     createUser: context.createUser,
     signinUser: context.signinUser,
+    signoutUser: context.signoutUser,
   };
 };
