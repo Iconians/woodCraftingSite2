@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { useCarvingContext } from "../../providers/carvings.provider";
 import { NavBar } from "../NavBar/NavBar";
@@ -5,8 +6,20 @@ import "./ProductPage.css";
 
 export const ProductPage = () => {
   const location = useLocation();
-  console.log(location);
   const { carvingArray } = useCarvingContext();
+  const [favorite, setFavorite] = useState<boolean>(false);
+  const [favoriteArray, setFavoriteArray] = useState<[]>([]);
+
+  // useEffect(() => {
+  //   const fetchFavorites = fetch("http://localhost:3000/favorites")
+  //   .then()
+  //   const favorites = favoriteArray.map((favorite) => {
+  //     if (favorite.userId) {
+
+  //     }
+  //   })
+
+  // }, [])
 
   return (
     <div className="product-page-wrapper" id="productPage">
@@ -24,7 +37,11 @@ export const ProductPage = () => {
               <p>{carving.story}</p>
             </div>
             <div className="buttons-container">
-              <button>Favorite</button>
+              {favorite ? (
+                <button id={`${carving.id}`}>Favorite</button>
+              ) : (
+                <button id={`${carving.id}`}>unFavorite</button>
+              )}
               {carving.price ? (
                 <button>{`Add to Cart ${carving.price}`}</button>
               ) : null}
