@@ -54,7 +54,7 @@
       "id": 1,
       "image": "https://upload.wikimedia.org/wikipedia/commons/a/ab/Bioengineered_obese_mouse%2C_Aberdeen%2C_Scotland%2C_1998_Wellcome_L0060083.jpg",
       "carvingName": "carving",
-      "userId": "userid",
+      "userId": 3,
       "carverName": "users name",
       "availableToPurchase": false,
       "story": "story of product",
@@ -65,7 +65,7 @@
       "id": 2,
       "image": "https://upload.wikimedia.org/wikipedia/commons/a/ab/Bioengineered_obese_mouse%2C_Aberdeen%2C_Scotland%2C_1998_Wellcome_L0060083.jpg",
       "carvingName": "carving",
-      "userId": "userid",
+      "userId": 3,
       "carverName": "users name",
       "availableToPurchase": true,
       "story": "story of product",
@@ -88,8 +88,8 @@
   "purchases": [
     {
       "id": 1,
-      "userId": "userId",
-      "carvingId": "carvingId",
+      "userId": 2,
+      "carvingId": 1,
       "name": "name",
       "address": "address",
       "city": "city",
