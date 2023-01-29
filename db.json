@@ -1,7 +1,7 @@
 {
   "users": [
     {
-      "id": 0,
+      "id": 1,
       "username": "username",
       "name": "name",
       "password": "password"
@@ -10,17 +10,11 @@
       "name": "cl",
       "email": "clay@gmail.com",
       "password": "password",
-      "id": 1
-    },
-    {
-      "name": "hi",
-      "email": "cay@mail.com",
-      "password": "password",
       "id": 2
     },
     {
       "name": "hi",
-      "email": "email@email.com",
+      "email": "cay@mail.com",
       "password": "password",
       "id": 3
     },
@@ -44,14 +38,20 @@
     },
     {
       "name": "hi",
-      "email": "gmail@email.com",
+      "email": "email@email.com",
       "password": "password",
       "id": 7
+    },
+    {
+      "name": "hi",
+      "email": "gmail@email.com",
+      "password": "password",
+      "id": 8
     }
   ],
   "carvings": [
     {
-      "id": 0,
+      "id": 1,
       "image": "https://upload.wikimedia.org/wikipedia/commons/a/ab/Bioengineered_obese_mouse%2C_Aberdeen%2C_Scotland%2C_1998_Wellcome_L0060083.jpg",
       "carvingName": "carving",
       "userId": "userid",
@@ -62,7 +62,7 @@
       "price": null
     },
     {
-      "id": 1,
+      "id": 2,
       "image": "https://upload.wikimedia.org/wikipedia/commons/a/ab/Bioengineered_obese_mouse%2C_Aberdeen%2C_Scotland%2C_1998_Wellcome_L0060083.jpg",
       "carvingName": "carving",
       "userId": "userid",
@@ -75,41 +75,29 @@
   ],
   "favorites": [
     {
-      "id": 0,
-      "userId": "userId",
-      "carvingId": "carvingId"
+      "userId": 3,
+      "carvingId": 1,
+      "id": 1
+    },
+    {
+      "userId": 3,
+      "carvingId": 2,
+      "id": 2
     }
   ],
   "purchases": [
     {
-      "id": 0,
+      "id": 1,
       "userId": "userId",
       "carvingId": "carvingId",
-      "shipping": [
-        {
-          "name": "name",
-          "address": "address",
-          "city": "city",
-          "state": "state",
-          "zip": 7655765
-        }
-      ],
-      "paymentInfo": [
-        {
-          "cardType": "visa",
-          "cardNumbers": 1234567890123456800,
-          "expDate": "11/28",
-          "billingAddress": [
-            {
-              "name": "name",
-              "address": "address",
-              "city": "city",
-              "state": "state",
-              "zip": 7655765
-            }
-          ]
-        }
-      ]
+      "name": "name",
+      "address": "address",
+      "city": "city",
+      "state": "state",
+      "zip": 7655765,
+      "cardType": "visa",
+      "cardNumbers": 1234567890123456800,
+      "expDate": "11/28"
     }
   ]
 }
