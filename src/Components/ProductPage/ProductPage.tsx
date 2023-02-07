@@ -1,5 +1,9 @@
 import { useEffect, useState } from "react";
+import { toast } from "react-hot-toast";
 import { useLocation } from "react-router-dom";
+import { addFavorite } from "../../fetches/addFavorite";
+import { deleteFetch } from "../../fetches/deleteFetch";
+import { fetchFavorites } from "../../fetches/fetchFavorites";
 import { useCarvingContext } from "../../providers/carvings.provider";
 import { NavBar } from "../NavBar/NavBar";
 import "./ProductPage.css";
@@ -7,19 +11,9 @@ import "./ProductPage.css";
 export const ProductPage = () => {
   const location = useLocation();
   const { carvingArray } = useCarvingContext();
-  const [favorite, setFavorite] = useState<boolean>(false);
   const [favoriteArray, setFavoriteArray] = useState<
     { carvingId: number; userId: number; id: number }[]
   >([]);
-
-  useEffect(() => {
-    fetch("http://localhost:3000/favorites").then((data) =>
-      data.json().then((data) => {
-        setFavoriteArray(data);
-        findFavorites();
-      })
-    );
-  }, []);
 
   const getUserId = () => {
     const user = localStorage.getItem("user");
@@ -29,41 +23,63 @@ export const ProductPage = () => {
     }
   };
 
-  const findFavorites = () => {
+  const findFavorites = (
+    favsArray: { carvingId: number; userId: number; id: number }[]
+  ) => {
     const userId = getUserId();
-    const favs = favoriteArray.filter((favorite) => favorite.userId === userId);
-    if (favs.length) {
-      setFavoriteArray(favs);
-      setFavorite(true);
-      console.log(favs);
+    const favs = favsArray.filter((favorite) => favorite.userId === userId);
+    const carving = favs.filter(
+      (carving) => carving.carvingId === location.state.productId
+    );
+    if (carving.length) {
+      setFavoriteArray(carving);
     }
   };
 
   const addToFavorites = (e: any) => {
     const id = e.target.id;
     const userId = getUserId();
-    fetch("http://localhost:3000/favorites", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ userId: userId, carvingId: parseInt(id) }),
-    }).then((res) => console.log(res));
-    setFavorite(true);
+    addFavorite(userId, parseInt(id)).then((res) => {
+      if (res.ok) {
+        setFavoriteArray([
+          ...favoriteArray,
+          { userId: userId, carvingId: parseInt(id), id: 0 },
+        ]);
+      } else {
+        toast.error(
+          "there was an error while trying to favorite the product please try again or contact us for further assistance"
+        );
+      }
+    });
   };
 
   const deleteAFavorites = (e: any) => {
     const id = e.target.id;
-    const userId = getUserId();
     const getFavorite = favoriteArray.find(
       (favorite) => favorite.carvingId === parseInt(id)
     );
-    console.log(getFavorite, id, favoriteArray);
-    if (getFavorite !== undefined)
-      return fetch(`http://localhost:3000/favorites/${getFavorite.id}`, {
-        method: "DELETE",
+    if (getFavorite !== undefined) {
+      deleteFetch(getFavorite).then((res) => {
+        if (res.ok) {
+          setFavoriteArray(
+            favoriteArray.filter(
+              (carving) => carving.carvingId !== parseInt(id)
+            )
+          );
+        } else {
+          toast.error(
+            "there was an error while trying to unfavorite the product please try again or contact us for further assistance"
+          );
+        }
       });
+    }
   };
+
+  useEffect(() => {
+    fetchFavorites().then((data) => {
+      findFavorites(data);
+    });
+  }, [favoriteArray.length]);
 
   return (
     <div className="product-page-wrapper" id="productPage">
@@ -81,7 +97,8 @@ export const ProductPage = () => {
               <p>{carving.story}</p>
             </div>
             <div className="buttons-container">
-              {favorite ? (
+              {/* buttons need to take into consideration of actual product */}
+              {favoriteArray.length ? (
                 <button id={`${carving.id}`} onClick={deleteAFavorites}>
                   unFavorite
                 </button>

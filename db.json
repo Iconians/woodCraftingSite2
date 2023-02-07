@@ -76,13 +76,8 @@
   "favorites": [
     {
       "userId": 3,
-      "carvingId": 1,
-      "id": 1
-    },
-    {
-      "userId": 3,
       "carvingId": 2,
-      "id": 2
+      "id": 3
     }
   ],
   "purchases": [
