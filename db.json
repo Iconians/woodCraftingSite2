@@ -70,14 +70,14 @@
       "availableToPurchase": true,
       "story": "story of product",
       "type": "machineCarved",
-      "price": "$59.00"
+      "price": 59
     }
   ],
   "favorites": [
     {
       "userId": 3,
-      "carvingId": 2,
-      "id": 3
+      "carvingId": 1,
+      "id": 4
     }
   ],
   "purchases": [

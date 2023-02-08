@@ -10,7 +10,7 @@ import "./ProductPage.css";
 
 export const ProductPage = () => {
   const location = useLocation();
-  const { carvingArray } = useCarvingContext();
+  const { carvingArray, addPurchaseItems } = useCarvingContext();
   const [favoriteArray, setFavoriteArray] = useState<
     { carvingId: number; userId: number; id: number }[]
   >([]);
@@ -75,6 +75,14 @@ export const ProductPage = () => {
     }
   };
 
+  const addItemToCart = (e: any) => {
+    const id = e.target.id;
+    const findItem = carvingArray.find(
+      (carving) => carving.id === parseInt(id)
+    );
+    addPurchaseItems(findItem);
+  };
+
   useEffect(() => {
     fetchFavorites().then((data) => {
       findFavorites(data);
@@ -108,7 +116,10 @@ export const ProductPage = () => {
                 </button>
               )}
               {carving.price ? (
-                <button>{`Add to Cart ${carving.price}`}</button>
+                <button
+                  id={`${carving.id}`}
+                  onClick={addItemToCart}
+                >{`Add to Cart $${carving.price}`}</button>
               ) : null}
             </div>
           </>

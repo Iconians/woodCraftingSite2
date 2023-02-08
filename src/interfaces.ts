@@ -7,6 +7,6 @@ export interface carvingArray {
   availableToPurchase: boolean
   story: string
   type: string
-  price: null | string
+  price: null | number
 
 }

@@ -6,11 +6,12 @@ import { ProductPage } from "./Components/ProductPage/ProductPage";
 import { SignInPage } from "./Components/SignInPage/SignInPage";
 import { AuthProvider } from "./providers/auth.provider";
 import { Toaster } from "react-hot-toast";
+import { CartModal } from "./Components/CartModal/CartModal";
 
 function App() {
   return (
     <div className="App">
-      <CarvingProvider carvingArray={[]}>
+      <CarvingProvider carvingArray={[]} addPurchaseItems={[]} cartItems={[]}>
         <AuthProvider user loggedIn createUser signinUser signoutUser>
           <Toaster />
           <Router>
