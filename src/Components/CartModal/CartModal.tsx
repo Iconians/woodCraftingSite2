@@ -1,23 +1,25 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { carvingArray } from "../../interfaces";
 import { useCarvingContext } from "../../providers/carvings.provider";
 import { CartItemHolder } from "../CartItemsHolder/CartItemsHolder";
 
 export const CartModal = () => {
   const { cartItems } = useCarvingContext();
-  const [subtotal, setSubtotal] = useState<string>("0");
+  const [subtotal, setSubtotal] = useState<number | string>(0);
 
   const findSubtotal = () => {
-    const findSum = cartItems.map((carving: carvingArray) => {
-      let total = 0;
+    let total = 0;
+    cartItems.map((carving: carvingArray) => {
       carving.price !== null ? (total = total + carving.price) : null;
-      return total;
     });
-    console.log(findSum);
-    // setSubtotal(findSum[0].toFixed(2));
+    console.log(total);
+    setSubtotal(total.toFixed(2));
   };
-  console.log("render");
-  findSubtotal();
+
+  useEffect(() => {
+    findSubtotal();
+  }, [cartItems.length]);
+
   return (
     <div className="cart-wrapper">
       <CartItemHolder />

@@ -59,7 +59,8 @@
       "availableToPurchase": false,
       "story": "story of product",
       "type": "handCarved",
-      "price": null
+      "price": null,
+      "qty": 1
     },
     {
       "id": 2,
@@ -70,7 +71,8 @@
       "availableToPurchase": true,
       "story": "story of product",
       "type": "machineCarved",
-      "price": 59
+      "price": 59,
+      "qty": 1
     }
   ],
   "favorites": [

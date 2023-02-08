@@ -8,5 +8,6 @@ export interface carvingArray {
   story: string
   type: string
   price: null | number
+  qty: number
 
 }

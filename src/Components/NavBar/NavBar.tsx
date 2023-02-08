@@ -6,14 +6,13 @@ import "./Navbar.css";
 
 export const NavBar = () => {
   const { loggedIn } = useAuthContext();
-  console.log("Render");
   return (
     <>
       <div className="navbar-wrapper">
         <div className="brand-div">WoodCrafting Hobby Site</div>
         <div className="btns">{loggedIn ? <NavAcctBtn /> : <NavButtons />}</div>
       </div>
-      {/* <CartModal /> */}
+      <CartModal />
     </>
   );
 };

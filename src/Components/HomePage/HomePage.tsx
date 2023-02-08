@@ -1,4 +1,5 @@
 import { useCarvingContext } from "../../providers/carvings.provider";
+import { CartModal } from "../CartModal/CartModal";
 import { NavBar } from "../NavBar/NavBar";
 import { ProductComponentHolder } from "../productComponetHolder/ProductComponentHolder";
 
@@ -32,6 +33,7 @@ export const HomePage = () => {
           key={info.id}
         />
       ))}
+
       <div className="disclaimer">
         Don't use your real passwords as this site is unsecure and ones can
         easliy find them

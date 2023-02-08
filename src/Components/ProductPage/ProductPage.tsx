@@ -105,7 +105,6 @@ export const ProductPage = () => {
               <p>{carving.story}</p>
             </div>
             <div className="buttons-container">
-              {/* buttons need to take into consideration of actual product */}
               {favoriteArray.length ? (
                 <button id={`${carving.id}`} onClick={deleteAFavorites}>
                   unFavorite
@@ -116,10 +115,17 @@ export const ProductPage = () => {
                 </button>
               )}
               {carving.price ? (
-                <button
-                  id={`${carving.id}`}
-                  onClick={addItemToCart}
-                >{`Add to Cart $${carving.price}`}</button>
+                <>
+                  {carving.qty === 0 ? (
+                    <p>out of stock</p>
+                  ) : (
+                    <button
+                      id={`${carving.id}`}
+                      onClick={addItemToCart}
+                      disabled={carving.qty === 0}
+                    >{`Add to Cart $${carving.price.toFixed(2)}`}</button>
+                  )}
+                </>
               ) : null}
             </div>
           </>
