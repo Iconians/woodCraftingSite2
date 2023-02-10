@@ -17,7 +17,7 @@ export const CheckoutPage = () => {
   return (
     <div className="checkout-page-wrapper">
       <NavBar />
-      <div className="shipping-info-wrapper">
+      <div className="form-info-wrapper">
         <h2>Shipping Information</h2>
         <form action="">
           <label htmlFor="name">Full Name (First and Last)</label>
@@ -34,11 +34,7 @@ export const CheckoutPage = () => {
           </select>
           <label htmlFor="zip">Zip</label>
           <input type="text" name="zip" placeholder="Zip" />
-        </form>
-      </div>
-      <div className="payment-info-wrapper">
-        <h2>Payment</h2>
-        <form action="">
+          <h2>Payment</h2>
           <label htmlFor="card-number">Card Numbers</label>
           <input type="text" />
           <div className="expire-wrapper">
@@ -55,8 +51,8 @@ export const CheckoutPage = () => {
               ))}
             </select>
           </div>
+          <input type="submit" />
         </form>
-        <button>Pay</button>
       </div>
       <div className="total-wrapper">
         <h2>Total</h2>
