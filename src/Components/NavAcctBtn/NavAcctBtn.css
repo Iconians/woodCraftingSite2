@@ -1,3 +1,8 @@
 .buttons-wrapper {
   display: flex;
 }
+
+.acct-btn-wrapper .cart-icon-div {
+  cursor: pointer;
+}
+

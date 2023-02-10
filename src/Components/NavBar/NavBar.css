@@ -1,3 +1,5 @@
+.nav-wrapper {position: relative;}
+
 .navbar-wrapper {
   display: flex;
   justify-content: space-around;

@@ -24,6 +24,10 @@
   font-style: italic;
 }
 
+.cart-icon-div {
+  cursor: pointer;
+}
+
 .cart-icon {
   margin-left: 15px;
   font-size: 22px;

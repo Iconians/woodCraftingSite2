@@ -1,0 +1,15 @@
+.cart-wrapper {
+  position: absolute;
+  right: 0px;
+  top: 48px;
+  bottom: 0px;
+  width: 320px;
+  background-color: antiquewhite;
+  transform: translate(100%,0)scale(1); 
+  display: none;
+} 
+
+.open {
+  transform: translate(0%,0)scale(1);
+  display: block;
+}

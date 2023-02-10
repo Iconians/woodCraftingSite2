@@ -1,9 +1,13 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useState } from "react";
 import { carvingArray } from "../../interfaces";
 import { useCarvingContext } from "../../providers/carvings.provider";
 import { CartItemHolder } from "../CartItemsHolder/CartItemsHolder";
+import { faRectangleXmark } from "@fortawesome/free-solid-svg-icons";
+import "./CartModal.css";
+import { Link } from "react-router-dom";
 
-export const CartModal = () => {
+export const CartModal = ({ openModal, openCartModal }: any) => {
   const { cartItems } = useCarvingContext();
   const [subtotal, setSubtotal] = useState<number | string>(0);
 
@@ -12,7 +16,6 @@ export const CartModal = () => {
     cartItems.map((carving: carvingArray) => {
       carving.price !== null ? (total = total + carving.price) : null;
     });
-    console.log(total);
     setSubtotal(total.toFixed(2));
   };
 
@@ -21,14 +24,21 @@ export const CartModal = () => {
   }, [cartItems.length]);
 
   return (
-    <div className="cart-wrapper">
+    <div className={`cart-wrapper ${openModal === true ? "open" : null}`}>
+      <FontAwesomeIcon icon={faRectangleXmark} onClick={openCartModal} />
       <CartItemHolder />
       <div className="subtotal-wrapper">
         <h4>Subtotal</h4>
-        <p>{subtotal}</p>
+        <p>{`$${subtotal}`}</p>
       </div>
-      <div className="buttons">Checkout</div>
-      <div className="buttons">Back</div>
+      <Link
+        to="/Component/CheckoutPage/CheckoutPage"
+        state={{
+          subtotal,
+        }}
+      >
+        <button className="button">Checkout</button>
+      </Link>
     </div>
   );
 };

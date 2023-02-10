@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useAuthContext } from "../../providers/auth.provider";
 import "./NavAcctBtn.css";
 
-export const NavAcctBtn = () => {
+export const NavAcctBtn = ({ openCartModal }: any) => {
   const { user, signoutUser } = useAuthContext();
   const userSelection = ({ target: { value } }: any) => {
     if (value === "signOut") {
@@ -24,7 +24,7 @@ export const NavAcctBtn = () => {
           <option value="signOut">Sign Out</option>
         </select>
       </div>
-      <div>
+      <div className="cart-icon-div" onClick={openCartModal}>
         <FontAwesomeIcon className="cart-icon" icon={faCartShopping} />
       </div>
     </div>

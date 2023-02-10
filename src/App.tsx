@@ -7,6 +7,7 @@ import { SignInPage } from "./Components/SignInPage/SignInPage";
 import { AuthProvider } from "./providers/auth.provider";
 import { Toaster } from "react-hot-toast";
 import { CartModal } from "./Components/CartModal/CartModal";
+import { CheckoutPage } from "./Components/CheckoutPage/Checkoutpage";
 
 function App() {
   return (
@@ -24,6 +25,10 @@ function App() {
               <Route
                 path="/Component/SignInPage/SignInPage"
                 element={<SignInPage />}
+              />
+              <Route
+                path="/Component/CheckoutPage/CheckoutPage"
+                element={<CheckoutPage />}
               />
             </Routes>
           </Router>

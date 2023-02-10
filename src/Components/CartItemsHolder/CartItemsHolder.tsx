@@ -3,7 +3,6 @@ import "./CartItemsHolder.css";
 
 export const CartItemHolder = () => {
   const { cartItems } = useCarvingContext();
-  console.log(cartItems);
   return (
     <div className="cart-itms-wrapper">
       <>
@@ -15,6 +14,9 @@ export const CartItemHolder = () => {
             </div>
             <div className="cart-product-img-wrapper">
               <img src={carving.image} alt="" />
+            </div>
+            <div>
+              <p>{`$${carving.price?.toFixed(2)}`}</p>
             </div>
           </div>
         ))}
