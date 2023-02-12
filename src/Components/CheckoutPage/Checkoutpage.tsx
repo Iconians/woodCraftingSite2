@@ -8,9 +8,34 @@ import { NavBar } from "../NavBar/NavBar";
 export const CheckoutPage = () => {
   const location = useLocation();
   const [total, setTotal] = useState(0);
+  const [name, setName] = useState("");
+  const [address, setAddress] = useState("");
+  const [city, setCity] = useState("");
+  const [state, setState] = useState("");
+  const [zip, setZip] = useState("");
+  const [cardNumber, setCardNumber] = useState("");
+  const [expireMonth, setExpireMonth] = useState("");
+  const [expireYear, setExpireYear] = useState("");
   const findTotal = () => {
     setTotal(parseInt(location.state.subtotal) + 12.99);
   };
+  const inputData = [
+    {
+      label: "Full Name (First and Last)",
+      name: "name",
+      value: name,
+    },
+    {
+      label: "Address",
+      name: "address",
+      value: address,
+    },
+    {
+      label: "City",
+      name: "city",
+      value: city,
+    },
+  ];
   useEffect(() => {
     findTotal();
   }, []);
@@ -20,16 +45,17 @@ export const CheckoutPage = () => {
       <div className="form-info-wrapper">
         <h2>Shipping Information</h2>
         <form action="">
-          <label htmlFor="name">Full Name (First and Last)</label>
-          <input type="text" name="name" placeholder="Name" />
-          <label htmlFor="address">Address</label>
-          <input type="text" name="address" placeholder="Address" />
-          <label htmlFor="city">City</label>
-          <input type="text" name="city" placeholder="City" />
+          {inputData.map((input) => (
+            <>
+              <label htmlFor={input.name}>{input.label}</label>
+              <input type="text" name={input.name} placeholder={input.label} />
+            </>
+          ))}
+
           <label htmlFor="state">State</label>
-          <select name="state" id="stateId">
+          <select value={state} name="state" id="stateId">
             {listOfStates.map((state) => (
-              <option>{state}</option>
+              <option value={state}>{state}</option>
             ))}
           </select>
           <label htmlFor="zip">Zip</label>

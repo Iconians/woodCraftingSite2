@@ -1,5 +1,4 @@
 import { useCarvingContext } from "../../providers/carvings.provider";
-import { CartModal } from "../CartModal/CartModal";
 import { NavBar } from "../NavBar/NavBar";
 import { ProductComponentHolder } from "../productComponetHolder/ProductComponentHolder";
 
