@@ -37,7 +37,9 @@ export const CartModal = ({ openModal, openCartModal }: any) => {
           subtotal,
         }}
       >
-        <button className="button">Checkout</button>
+        <button disabled={cartItems.length === 0} className="button">
+          Checkout
+        </button>
       </Link>
     </div>
   );

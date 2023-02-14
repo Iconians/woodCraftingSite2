@@ -1,13 +1,15 @@
+import { toast } from "react-hot-toast";
+
 export const emailValidation = (value: string) => {
   if (value) {
     if (/[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+/.test(value)) {
       return '';
     }else {
-      return 'Enter Valid email'
+      toast.error('Enter Valid email')
     }
   }
   else {
-    return 'Enter Valid email'
+    toast.error('Enter Valid email')
   }
 }
 
@@ -16,7 +18,7 @@ export const passwordValidation = (value: string) => {
     if (/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$/.test(value) && value.length <= 20) {
       return '';
     }else {
-      return 'Invalid password'
+      toast.error('Invalid password')
     }
   }
 }
@@ -26,7 +28,7 @@ export const onlyTextValidation = (value: string) => {
     if (/^[a-zA-Z ]*$/i.test(value)) {
       return '';
     }else {
-      return 'Alpabetical letters only'
+      toast.error('Alpabetical letters only')
     }
   }
   else {
@@ -39,7 +41,7 @@ export const onlyNumberValidation = (value: string) => {
     if (/^[0-9]*$/.test(value)) {
       return '';
     }else {
-      return 'Numbers Only'
+      toast.error('Numbers Only')
     }
   }
   else {
@@ -61,16 +63,16 @@ export const cardNumberValidation = (cardNumber: string) => {
       if (cardNumber && card === 'AMERICAN_EXPRESS') {
         return cardNumber && /^[1-6]{1}[0-9]{13,14}$/i.test(cardNumber.replace(/[^\d]/g, '').trim())
         ? '' 
-        : 'Enter a Valid Card';
+        : toast.error('Enter a Valid Card');
       }else {
         return cardNumber && /^[1-6]{1}[0-9]{15,16}$/i.test(cardNumber.replace(/[^\d]/g, '').trim())
         ? '' 
-        : 'Enter a Valid Card';
+        : toast.error('Enter a Valid Card');
       }
   
   }
-  return 'Enter a Valid Card help';
+  return toast.error('Enter a Valid Card');
 }
 
-export const securityCodeValidation = (min: string, value: string) => 
-  (value && value.length < min) ? ' must be 3 digits' : '';
+export const securityCodeValidation = (min: number, value: string) => 
+  (value.length < 3) ? toast.error('must be 3 digits') : toast.success("input correct")
