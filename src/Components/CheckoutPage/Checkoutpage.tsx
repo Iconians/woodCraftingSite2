@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, redirect, useLocation } from "react-router-dom";
 import { AMERICANEXPRESS, OTHERCARDS } from "../../constants";
 import { addPurchase } from "../../fetches/addPurchase";
 import { listOfMonths } from "../../listOfMonths";
@@ -36,7 +36,7 @@ export const CheckoutPage = () => {
     setTotal(parseInt(location.state.subtotal) + 12.99);
   };
 
-  const findDebitCardType = (cardNumber) => {
+  const findDebitCardType = (cardNumber: string) => {
     const regexPattern = {
       MASTERCARD: /^5[1-5][0-9]{1,}|^2[2-7][0-9]{1,}$/,
       VISA: /^4[0-9]{2,}$/,
@@ -50,7 +50,7 @@ export const CheckoutPage = () => {
     return "";
   };
 
-  const findCardLength = (cardType) => {
+  const findCardLength = (cardType: string) => {
     if (cardType === "AMERICAN_EXPRESS") {
       return AMERICANEXPRESS.length;
     } else {
@@ -61,6 +61,7 @@ export const CheckoutPage = () => {
   const handleValidations = (name: string, value: string) => {
     const validations = {
       name: (value: string) => onlyTextValidation(value),
+      address: () => "",
       city: (value: string) => onlyTextValidation(value),
       zip: (value: string) => onlyNumberValidation(value),
       cardnumber: (value: string) => cardNumberValidation(value),
@@ -102,7 +103,9 @@ export const CheckoutPage = () => {
         setZip(value);
         break;
       case "cardnumber":
-        setCardNumber(value);
+        let mask = value.split(" ").join("");
+        mask = mask.match(new RegExp(".{1,4}", "g")).join(" ");
+        setCardNumber(mask);
         break;
       case "card-month-expire":
         setExpireMonth(value);
@@ -162,12 +165,7 @@ export const CheckoutPage = () => {
     addPurchase(formData).then((res) => {
       if (res.ok) {
         console.log("hello");
-        <Link
-          to="/Component/ConfirmationPage/ConfirmationPage"
-          state={{
-            formData,
-          }}
-        ></Link>;
+        redirect("/Component/ConfirmationPage/ConfirmationPage");
       }
     });
   };
@@ -218,6 +216,7 @@ export const CheckoutPage = () => {
             value={zip}
             onChange={updateValue}
             onBlur={handleBlur}
+            maxLength={5}
           />
           <h2>Payment</h2>
           <label htmlFor="card-number">Card Numbers</label>
