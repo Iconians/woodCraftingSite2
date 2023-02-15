@@ -84,17 +84,18 @@
   ],
   "purchases": [
     {
-      "id": 1,
-      "userId": 2,
-      "carvingId": 1,
-      "name": "name",
-      "address": "address",
-      "city": "city",
-      "state": "state",
-      "zip": 7655765,
-      "cardType": "visa",
-      "cardNumbers": 1234567890123456800,
-      "expDate": "11/28"
+      "userId": 3,
+      "carvingId": [2],
+      "name": "fdgfggd",
+      "address": "fdgfdgfdg",
+      "city": "fdgfdgfg",
+      "state": "AL : Alabama",
+      "zip": "542523543",
+      "cardType": "MASTERCARD",
+      "cardNumbers": "5353535354354354354",
+      "expMonthDate": "Jan",
+      "expYearDate": "2023",
+      "id": 3
     }
   ]
 }

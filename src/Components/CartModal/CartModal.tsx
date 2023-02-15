@@ -35,6 +35,7 @@ export const CartModal = ({ openModal, openCartModal }: any) => {
         to="/Component/CheckoutPage/CheckoutPage"
         state={{
           subtotal,
+          cartItems,
         }}
       >
         <button disabled={cartItems.length === 0} className="button">

@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { AMERICANEXPRESS, OTHERCARDS } from "../../constants";
+import { addPurchase } from "../../fetches/addPurchase";
 import { listOfMonths } from "../../listOfMonths";
 import { listOfStates } from "../../ListOfStates";
 import { listOfYears } from "../../listOfYears";
+import { useCarvingContext } from "../../providers/carvings.provider";
 import {
   cardNumberValidation,
   onlyNumberValidation,
@@ -19,13 +21,17 @@ export const CheckoutPage = () => {
   const [name, setName] = useState("");
   const [address, setAddress] = useState("");
   const [city, setCity] = useState("");
-  const [state, setState] = useState("");
+  const [state, setState] = useState("AL : Alabama");
   const [zip, setZip] = useState("");
   const [cardNumber, setCardNumber] = useState("");
-  const [expireMonth, setExpireMonth] = useState("");
-  const [expireYear, setExpireYear] = useState("");
+  const [expireMonth, setExpireMonth] = useState("Jan");
+  const [expireYear, setExpireYear] = useState("2023");
   const [securityCode, setSecurityCode] = useState("");
   const [cardLength, setCardLength] = useState(19);
+  const [cardType, setCardType] = useState("");
+
+  const { cartItems } = useCarvingContext();
+
   const findTotal = () => {
     setTotal(parseInt(location.state.subtotal) + 12.99);
   };
@@ -64,8 +70,9 @@ export const CheckoutPage = () => {
       const card = findDebitCardType(value);
       const length = findCardLength(card);
       setCardLength(length);
+      setCardType(card);
+      console.log(card);
     }
-    console.log(name, value);
     validations[name](value);
   };
 
@@ -130,7 +137,40 @@ export const CheckoutPage = () => {
     },
   ];
 
-  const recordPurchase = () => {};
+  const getUserId = () => {
+    const user = localStorage.getItem("user");
+    if (user !== null) {
+      const userId = JSON.parse(user)["id"];
+      return userId;
+    }
+  };
+
+  const recordPurchase = () => {
+    const formData = {
+      userId: getUserId(),
+      carvingId: cartItems.map((item) => item.id),
+      name: name,
+      address: address,
+      city: city,
+      state: state,
+      zip: zip,
+      cardType: cardType,
+      cardNumbers: cardNumber,
+      expMonthDate: expireMonth,
+      expYearDate: expireYear,
+    };
+    addPurchase(formData).then((res) => {
+      if (res.ok) {
+        console.log("hello");
+        <Link
+          to="/Component/ConfirmationPage/ConfirmationPage"
+          state={{
+            formData,
+          }}
+        ></Link>;
+      }
+    });
+  };
 
   useEffect(() => {
     findTotal();
@@ -143,6 +183,7 @@ export const CheckoutPage = () => {
         <form
           onSubmit={(e) => {
             e.preventDefault();
+            recordPurchase();
           }}
         >
           {inputData.map((input) => (
@@ -220,7 +261,7 @@ export const CheckoutPage = () => {
             value={securityCode}
             onChange={updateValue}
             onBlur={handleBlur}
-            minLength={3}
+            maxLength={3}
           />
           <input type="submit" />
         </form>
