@@ -8,6 +8,7 @@ import { AuthProvider } from "./providers/auth.provider";
 import { Toaster } from "react-hot-toast";
 import { CheckoutPage } from "./Components/CheckoutPage/Checkoutpage";
 import { ConfirmationPage } from "./Components/ConfirmationPage/ConfirmationPage";
+import { FavoritePage } from "./Components/FavoritePage/FavoritePage";
 
 function App() {
   return (
@@ -18,22 +19,11 @@ function App() {
           <Router>
             <Routes>
               <Route path="/" element={<HomePage />} />
-              <Route
-                path="/Component/ProductPage/ProductPage"
-                element={<ProductPage />}
-              />
-              <Route
-                path="/Component/SignInPage/SignInPage"
-                element={<SignInPage />}
-              />
-              <Route
-                path="/Component/CheckoutPage/CheckoutPage"
-                element={<CheckoutPage />}
-              />
-              <Route
-                path="/Component/ConfirmationPage/ConfirmationPage"
-                element={<ConfirmationPage />}
-              />
+              <Route path="ProductPage" element={<ProductPage />} />
+              <Route path="SignInPage" element={<SignInPage />} />
+              <Route path="CheckoutPage" element={<CheckoutPage />} />
+              <Route path="ConfirmationPage" element={<ConfirmationPage />} />
+              <Route path="FavoritePage" element={<FavoritePage />}></Route>
             </Routes>
           </Router>
         </AuthProvider>

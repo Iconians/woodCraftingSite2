@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link, redirect, useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { AMERICANEXPRESS, OTHERCARDS } from "../../constants";
 import { addPurchase } from "../../fetches/addPurchase";
 import { listOfMonths } from "../../listOfMonths";
@@ -29,7 +29,6 @@ export const CheckoutPage = () => {
   const [securityCode, setSecurityCode] = useState("");
   const [cardLength, setCardLength] = useState(19);
   const [cardType, setCardType] = useState("");
-
   const { cartItems } = useCarvingContext();
 
   const findTotal = () => {
@@ -72,7 +71,6 @@ export const CheckoutPage = () => {
       const length = findCardLength(card);
       setCardLength(length);
       setCardType(card);
-      console.log(card);
     }
     validations[name](value);
   };
@@ -148,6 +146,8 @@ export const CheckoutPage = () => {
     }
   };
 
+  const navigate = useNavigate();
+
   const recordPurchase = () => {
     const formData = {
       userId: getUserId(),
@@ -164,8 +164,7 @@ export const CheckoutPage = () => {
     };
     addPurchase(formData).then((res) => {
       if (res.ok) {
-        console.log("hello");
-        redirect("/Component/ConfirmationPage/ConfirmationPage");
+        navigate("ConfirmationPage");
       }
     });
   };

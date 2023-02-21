@@ -78,14 +78,16 @@
   "favorites": [
     {
       "userId": 3,
-      "carvingId": 1,
-      "id": 4
+      "carvingId": 2,
+      "id": 1
     }
   ],
   "purchases": [
     {
       "userId": 3,
-      "carvingId": [2],
+      "carvingId": [
+        2
+      ],
       "name": "fbbcvbsdsd",
       "address": "vbvbcvbsdsdsd",
       "city": "vbvbvsdsd",
@@ -96,6 +98,22 @@
       "expMonthDate": "Jan",
       "expYearDate": "2023",
       "id": 1
+    },
+    {
+      "userId": 3,
+      "carvingId": [
+        2
+      ],
+      "name": "jnsjkn",
+      "address": "sklmlkmksmd4251",
+      "city": "smklksmmsk",
+      "state": "AL : Alabama",
+      "zip": "53135",
+      "cardType": "VISA",
+      "cardNumbers": "4113 5315 3135 1351",
+      "expMonthDate": "Jan",
+      "expYearDate": "2023",
+      "id": 2
     }
   ]
 }

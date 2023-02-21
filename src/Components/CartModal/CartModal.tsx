@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useState } from "react";
-import { carvingArray } from "../../interfaces";
+import { Carving } from "../../interfaces";
 import { useCarvingContext } from "../../providers/carvings.provider";
 import { CartItemHolder } from "../CartItemsHolder/CartItemsHolder";
 import { faRectangleXmark } from "@fortawesome/free-solid-svg-icons";
@@ -13,7 +13,7 @@ export const CartModal = ({ openModal, openCartModal }: any) => {
 
   const findSubtotal = () => {
     let total = 0;
-    cartItems.map((carving: carvingArray) => {
+    cartItems.map((carving: Carving) => {
       carving.price !== null ? (total = total + carving.price) : null;
     });
     setSubtotal(total.toFixed(2));
@@ -32,7 +32,7 @@ export const CartModal = ({ openModal, openCartModal }: any) => {
         <p>{`$${subtotal}`}</p>
       </div>
       <Link
-        to="/Component/CheckoutPage/CheckoutPage"
+        to="CheckoutPage"
         state={{
           subtotal,
           cartItems,

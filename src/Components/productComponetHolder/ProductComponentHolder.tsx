@@ -1,11 +1,11 @@
 import React from "react";
-import { carvingArray } from "../../interfaces";
+import { Carving } from "../../interfaces";
 import { ProductHolder } from "../ProductHolder/ProductHolder";
 import "./ProductComponentHolder.css";
 
 interface props {
   h3: string;
-  array: carvingArray[];
+  array: Carving[];
 }
 
 export const ProductComponentHolder = ({ h3, array }: props) => {

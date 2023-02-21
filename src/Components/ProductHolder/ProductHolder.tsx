@@ -9,7 +9,7 @@ interface props {
 export const ProductHolder = ({ img, id }: props) => {
   const navigate = useNavigate();
   const openProduct = (id: number) => {
-    navigate("/Component/ProductPage/ProductPage", {
+    navigate("ProductPage", {
       state: {
         productId: id,
       },
@@ -22,7 +22,7 @@ export const ProductHolder = ({ img, id }: props) => {
       </div>
       <div>
         <Link
-          to="/Component/ProductPage/ProductPage"
+          to="/ProductPage"
           state={{
             productId: id,
           }}

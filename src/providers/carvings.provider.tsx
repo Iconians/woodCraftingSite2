@@ -6,20 +6,20 @@ import React, {
   ReactNode,
 } from "react";
 import { fetchCarvings } from "../fetches/getCarvings";
-import { carvingArray } from "../interfaces";
+import { Carving } from "../interfaces";
 
 interface CarvingContextInterface {
-  carvingArray: carvingArray[];
+  carvingArray: Carving[];
   children?: ReactNode;
   addPurchaseItems: any;
-  cartItems: carvingArray[];
+  cartItems: Carving[];
 }
 
 const CarvingContext = createContext({} as CarvingContextInterface);
 
 export const CarvingProvider = ({ children }: CarvingContextInterface) => {
-  const [carvingArray, setCarvingArray] = useState<carvingArray[]>([]);
-  const [cartItems, setCartItems] = useState<carvingArray[]>([]);
+  const [carvingArray, setCarvingArray] = useState<Carving[]>([]);
+  const [cartItems, setCartItems] = useState<Carving[]>([]);
 
   useEffect(() => {
     fetchCarvings().then((data) => setCarvingArray(data));
