@@ -11,7 +11,7 @@ import { Carving } from "../interfaces";
 interface CarvingContextInterface {
   carvingArray: Carving[];
   children?: ReactNode;
-  addPurchaseItems: any;
+  addPurchaseItems: (item: any) => void;
   cartItems: Carving[];
 }
 

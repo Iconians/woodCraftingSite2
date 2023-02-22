@@ -20,6 +20,12 @@ export interface Favorite {
 export interface Users {
   id: number;
   username: string;
+  email: string;
+  password: string;
+}
+
+export interface newUser {
   name: string;
+  email: string;
   password: string;
 }

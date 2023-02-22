@@ -13,8 +13,8 @@ import { FavoritePage } from "./Components/FavoritePage/FavoritePage";
 function App() {
   return (
     <div className="App">
-      <CarvingProvider carvingArray={[]} addPurchaseItems={[]} cartItems={[]}>
-        <AuthProvider user loggedIn createUser signinUser signoutUser>
+      <CarvingProvider carvingArray={[]} addPurchaseItems cartItems={[]}>
+        <AuthProvider user createUser signinUser signoutUser>
           <Toaster />
           <Router>
             <Routes>

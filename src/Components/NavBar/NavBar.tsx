@@ -6,7 +6,7 @@ import { NavButtons } from "../NavButtons/NavButtons";
 import "./Navbar.css";
 
 export const NavBar = () => {
-  const { loggedIn } = useAuthContext();
+  const { user } = useAuthContext();
   const [openModal, setOpenModal] = useState<boolean>(false);
 
   const openCartModal = () => {
@@ -22,7 +22,7 @@ export const NavBar = () => {
         <div className="navbar-wrapper">
           <div className="brand-div">WoodCrafting Hobby Site</div>
           <div className="btns">
-            {loggedIn ? (
+            {Object.keys(user).length ? (
               <NavAcctBtn openCartModal={openCartModal} />
             ) : (
               <NavButtons openCartModal={openCartModal} />
