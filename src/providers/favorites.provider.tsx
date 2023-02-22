@@ -6,6 +6,7 @@ import React, {
   useState,
 } from "react";
 import { fetchFavorites } from "../fetches/fetchFavorites";
+// having trouble intergrting this provider with product page and favorite page
 
 interface FavoriteContextInterface {
   children?: ReactNode;

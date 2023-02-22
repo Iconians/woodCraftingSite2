@@ -7,14 +7,6 @@ interface props {
 }
 
 export const ProductHolder = ({ img, id }: props) => {
-  const navigate = useNavigate();
-  const openProduct = (id: number) => {
-    navigate("ProductPage", {
-      state: {
-        productId: id,
-      },
-    });
-  };
   return (
     <div className="product-holder-wrapper" key={id}>
       <div className="img-wrapper">

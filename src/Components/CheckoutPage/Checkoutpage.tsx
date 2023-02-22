@@ -12,8 +12,8 @@ import {
   onlyTextValidation,
   securityCodeValidation,
 } from "../../validations";
-
 import { NavBar } from "../NavBar/NavBar";
+// restructure code, escpecially the tsx
 
 export const CheckoutPage = () => {
   const location = useLocation();

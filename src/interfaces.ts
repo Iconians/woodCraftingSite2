@@ -16,3 +16,10 @@ export interface Favorite {
   carvingId: number;
   id: number;
 }
+
+export interface Users {
+  id: number;
+  username: string;
+  name: string;
+  password: string;
+}

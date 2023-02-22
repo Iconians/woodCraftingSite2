@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
-import { fetchFavorites } from "../../fetches/fetchFavorites";
+// import { Carving } from "../../interfaces";
 import { fetchFavoriteCarvings } from "../../messaround";
 import { useCarvingContext } from "../../providers/carvings.provider";
 import { NavBar } from "../NavBar/NavBar";
 import { ProductHolder } from "../ProductHolder/ProductHolder";
+// find bug that's affecting the refresh btn
 
 export const FavoritePage = () => {
   const { carvingArray } = useCarvingContext();
@@ -17,28 +18,11 @@ export const FavoritePage = () => {
     }
   };
 
-  // const getfavorites = (favorites) => {
-  //   let array = [];
-  //   for (let elm of favorites) {
-  //     let findCarving = carvingArray.find(
-  //       (carving) => carving.id === elm.carvingId
-  //     );
-  //     console.log(elm, findCarving);
-  //     if (findCarving !== undefined) {
-  //       array = [...array, findCarving];
-  //     }
-  //   }
-  //   setFavorites(array);
-  // };
-
   useEffect(() => {
-    fetchFavorites().then((data) => {
-      const user = getUserId();
-      const userFavorites = data.filter((favorite) => favorite.userId === user);
-      // getfavorites(userFavorites);
-      const favorites = fetchFavoriteCarvings(3, carvingArray);
-      setFavorites(favorites);
-    });
+    const user = getUserId();
+    fetchFavoriteCarvings(user, carvingArray).then((data) =>
+      setFavorites(data)
+    );
   }, []);
 
   return (
