@@ -5,7 +5,7 @@ export const fetchFavoriteCarvings = (
   userId: number,
   carvingArray: Carving[]
 ) => {
-  let arr: any = [];
+  let arr: Carving[] = [];
   return fetchFavorites().then((favorites) => {
     favorites
       .filter((favorite) => favorite.userId === userId)

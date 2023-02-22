@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-// import { Carving } from "../../interfaces";
+import { Carving } from "../../interfaces";
 import { fetchFavoriteCarvings } from "../../messaround";
 import { useCarvingContext } from "../../providers/carvings.provider";
 import { NavBar } from "../NavBar/NavBar";
@@ -8,7 +8,7 @@ import { ProductHolder } from "../ProductHolder/ProductHolder";
 
 export const FavoritePage = () => {
   const { carvingArray } = useCarvingContext();
-  const [favorites, setFavorites] = useState([]);
+  const [favorites, setFavorites] = useState<Carving[]>([]);
 
   const getUserId = () => {
     const user = localStorage.getItem("user");
