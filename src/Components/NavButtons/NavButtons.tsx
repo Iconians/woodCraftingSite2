@@ -3,7 +3,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./NavButtons.css";
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
 
-export const NavButtons = ({ openCartModal }: any) => (
+interface props {
+  openCartModal: () => void;
+}
+
+export const NavButtons = ({ openCartModal }: props) => (
   <div className="nav-btn-wrapper">
     <div className="button-div">
       <Link className="signin-link" to="SignInPage">

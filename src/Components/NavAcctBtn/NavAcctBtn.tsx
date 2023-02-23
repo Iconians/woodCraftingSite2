@@ -1,34 +1,26 @@
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useAuthContext } from "../../providers/auth.provider";
 import "./NavAcctBtn.css";
 
-export const NavAcctBtn = ({ openCartModal }: any) => {
+interface props {
+  openCartModal: () => void;
+}
+
+export const NavAcctBtn = ({ openCartModal }: props) => {
   const { user, signoutUser } = useAuthContext();
   const navigate = useNavigate();
 
-  const userSelection = ({ target: { value } }: any) => {
-    if (value === "signOut") {
-      signoutUser();
-    }
-    if (value === "favorites") {
-      navigate("FavoritePage");
-    }
+  const signOut = () => {
+    signoutUser();
   };
 
   return (
     <div className="buttons-wrapper">
       <div className="acct-btn-wrapper">
-        <select
-          onChange={userSelection}
-          name="accountSelect"
-          id="accountselect"
-        >
-          <option value="username">{user.name}</option>
-          <option value="favorites">Favorites</option>
-          <option value="signOut">Sign Out</option>
-        </select>
+        <Link to={"FavoritePage"}>Favorites</Link>
+        <button onClick={signOut}>Sign Out</button>
       </div>
       <div className="cart-icon-div" onClick={openCartModal}>
         <FontAwesomeIcon className="cart-icon" icon={faCartShopping} />

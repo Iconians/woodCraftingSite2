@@ -1,12 +1,18 @@
 import { useState } from "react";
 import { useAuthContext } from "../../providers/auth.provider";
 
-export const SignInForm = ({ changeForm }: any) => {
+interface props {
+  changeForm: () => void;
+}
+
+export const SignInForm = ({ changeForm }: props) => {
   const { signinUser } = useAuthContext();
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
 
-  const captureInput = ({ target: { name, value } }: any) => {
+  const captureInput = (e: React.ChangeEvent<HTMLInputElement>): void => {
+    const name = e.target.name;
+    const value = e.target.value;
     console.log(name);
 
     if (name === "email") {

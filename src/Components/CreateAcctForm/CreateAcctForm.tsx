@@ -43,7 +43,9 @@ export const CreateAcctForm = () => {
   const [password, setPassword] = useState<string>("");
   const [confirmPassword, setConfirmPassword] = useState<string>("");
 
-  const captureInput = ({ target: { name, value } }: any) => {
+  const captureInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const name = e.target.name;
+    const value = e.target.value;
     switch (name) {
       case "formName":
         setName(value);

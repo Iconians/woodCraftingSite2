@@ -4,6 +4,7 @@ import { useLocation } from "react-router-dom";
 import { addFavorite } from "../../fetches/addFavorite";
 import { deleteFetch } from "../../fetches/deleteFetch";
 import { fetchFavorites } from "../../fetches/fetchFavorites";
+import { Favorite } from "../../interfaces";
 import { useCarvingContext } from "../../providers/carvings.provider";
 import { NavBar } from "../NavBar/NavBar";
 import "./ProductPage.css";
@@ -11,9 +12,7 @@ import "./ProductPage.css";
 export const ProductPage = () => {
   const location = useLocation();
   const { carvingArray, addPurchaseItems } = useCarvingContext();
-  const [favoriteArray, setFavoriteArray] = useState<
-    { carvingId: number; userId: number; id: number }[]
-  >([]);
+  const [favoriteArray, setFavoriteArray] = useState<Favorite[]>([]);
 
   const getUserId = () => {
     const user = localStorage.getItem("user");

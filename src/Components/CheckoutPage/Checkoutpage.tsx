@@ -35,7 +35,7 @@ export const CheckoutPage = () => {
     setTotal(parseInt(location.state.subtotal) + 12.99);
   };
 
-  const findDebitCardType = (cardNumber: string) => {
+  const findDebitCardType = (cardNumber) => {
     const regexPattern = {
       MASTERCARD: /^5[1-5][0-9]{1,}|^2[2-7][0-9]{1,}$/,
       VISA: /^4[0-9]{2,}$/,
