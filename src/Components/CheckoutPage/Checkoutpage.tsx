@@ -164,7 +164,7 @@ export const CheckoutPage = () => {
     };
     addPurchase(formData).then((res) => {
       if (res.ok) {
-        navigate("ConfirmationPage");
+        navigate("/ConfirmationPage");
       }
     });
   };

@@ -13,7 +13,6 @@ export const SignInForm = ({ changeForm }: props) => {
   const captureInput = (e: React.ChangeEvent<HTMLInputElement>): void => {
     const name = e.target.name;
     const value = e.target.value;
-    console.log(name);
 
     if (name === "email") {
       setEmail(value);

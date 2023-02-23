@@ -19,11 +19,11 @@ function App() {
           <Router>
             <Routes>
               <Route path="/" element={<HomePage />} />
-              <Route path="ProductPage" element={<ProductPage />} />
-              <Route path="SignInPage" element={<SignInPage />} />
-              <Route path="CheckoutPage" element={<CheckoutPage />} />
-              <Route path="ConfirmationPage" element={<ConfirmationPage />} />
-              <Route path="FavoritePage" element={<FavoritePage />}></Route>
+              <Route path="/ProductPage" element={<ProductPage />} />
+              <Route path="/SignInPage" element={<SignInPage />} />
+              <Route path="/CheckoutPage" element={<CheckoutPage />} />
+              <Route path="/ConfirmationPage" element={<ConfirmationPage />} />
+              <Route path="/FavoritePage" element={<FavoritePage />}></Route>
             </Routes>
           </Router>
         </AuthProvider>
