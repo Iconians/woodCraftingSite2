@@ -2,6 +2,21 @@
   display: flex;
 }
 
+.acct-btn-wrapper {
+  width: 130px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.acct-btn-wrapper > a {
+  cursor: pointer;
+}
+
+.acct-favorite-btn {
+  color: white;
+  text-decoration: none;
+}
+
 .acct-btn-wrapper .cart-icon-div {
   cursor: pointer;
 }

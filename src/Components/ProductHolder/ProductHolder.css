@@ -1,10 +1,7 @@
 .product-holder-wrapper {
   width: 300px;
-  height: 250px;
-  padding: 30px;
   background-color: saddlebrown;
   border-radius: 20px;
-  z-index: 3;
   border: 1px solid #eee;
   box-shadow: rgb(0 0 0 / 6%) 0px 2px 4px;
   transition: all .3s ease-in-out;
@@ -16,13 +13,8 @@
   transform: translate3d(0px, -1px, 0px);
 }
 
-.img-wrapper {
-  margin: auto;
-  width: fit-content;
-}
-
-.img-wrapper > img {
-  width: 250px;
+.product-holder-wrapper > img {
+  width: 300px;
   border-radius: 10px;
 }
 

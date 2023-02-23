@@ -18,8 +18,10 @@ export const NavAcctBtn = ({ openCartModal }: props) => {
   return (
     <div className="buttons-wrapper">
       <div className="acct-btn-wrapper">
-        <Link to={"/FavoritePage"}>Favorites</Link>
-        <button onClick={signOut}>Sign Out</button>
+        <Link className="acct-favorite-btn" to={"/FavoritePage"}>
+          Favorites
+        </Link>
+        <a onClick={signOut}>Sign Out</a>
       </div>
       <div className="cart-icon-div" onClick={openCartModal}>
         <FontAwesomeIcon className="cart-icon" icon={faCartShopping} />

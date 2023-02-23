@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./ProductHolder.css";
 
 interface props {
@@ -17,20 +17,7 @@ export const ProductHolder = ({ img, id }: props) => {
       key={id}
       onClick={navigateToProductPage}
     >
-      <div className="img-wrapper">
-        <img src={img} alt="" />
-      </div>
-      <div>
-        <Link
-          className="link-wrapper"
-          to="/ProductPage"
-          state={{
-            productId: id,
-          }}
-        >
-          <p>More Details</p>
-        </Link>
-      </div>
+      <img src={img} alt="" />
     </div>
   );
 };
