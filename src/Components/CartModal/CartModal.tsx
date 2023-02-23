@@ -5,18 +5,30 @@ import { useCarvingContext } from "../../providers/carvings.provider";
 import { CartItemHolder } from "../CartItemsHolder/CartItemsHolder";
 import { faRectangleXmark } from "@fortawesome/free-solid-svg-icons";
 import "./CartModal.css";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
-export const CartModal = ({ openModal, openCartModal }: any) => {
+interface props {
+  openModal: boolean;
+  openCartModal: () => void;
+}
+
+export const CartModal = ({ openModal, openCartModal }: props) => {
   const { cartItems } = useCarvingContext();
   const [subtotal, setSubtotal] = useState<number | string>(0);
+  const navigate = useNavigate();
 
   const findSubtotal = () => {
     let total = 0;
     cartItems.map((carving: Carving) => {
-      carving.price !== null ? (total = total + carving.price) : null;
+      if (carving.price !== null) total = total + carving.price;
     });
     setSubtotal(total.toFixed(2));
+  };
+
+  const goToCartPage = () => {
+    navigate("/CheckoutPage", {
+      state: { subtotal: subtotal, cartItems: cartItems },
+    });
   };
 
   useEffect(() => {
@@ -25,23 +37,23 @@ export const CartModal = ({ openModal, openCartModal }: any) => {
 
   return (
     <div className={`cart-wrapper ${openModal === true ? "open" : null}`}>
-      <FontAwesomeIcon icon={faRectangleXmark} onClick={openCartModal} />
+      <FontAwesomeIcon
+        className="fa-x"
+        icon={faRectangleXmark}
+        onClick={openCartModal}
+      />
       <CartItemHolder />
       <div className="subtotal-wrapper">
         <h4>Subtotal</h4>
         <p>{`$${subtotal}`}</p>
       </div>
-      <Link
-        to="CheckoutPage"
-        state={{
-          subtotal,
-          cartItems,
-        }}
+      <button
+        onClick={goToCartPage}
+        disabled={cartItems.length === 0}
+        className="button"
       >
-        <button disabled={cartItems.length === 0} className="button">
-          Checkout
-        </button>
-      </Link>
+        Checkout
+      </button>
     </div>
   );
 };

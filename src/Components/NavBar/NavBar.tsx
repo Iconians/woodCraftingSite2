@@ -29,8 +29,8 @@ export const NavBar = () => {
             )}
           </div>
         </div>
-        <CartModal openModal={openModal} openCartModal={openCartModal} />
       </div>
+      <CartModal openModal={openModal} openCartModal={openCartModal} />
     </>
   );
 };

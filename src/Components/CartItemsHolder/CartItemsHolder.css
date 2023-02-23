@@ -1,3 +1,16 @@
+.cart-itms-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cart-card-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .cart-product-img-wrapper img {
   width: 150px;
+  border-radius: 10px;
 }
