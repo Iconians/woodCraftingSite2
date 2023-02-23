@@ -80,12 +80,19 @@
       "userId": 3,
       "carvingId": 2,
       "id": 1
+    },
+    {
+      "userId": 4,
+      "carvingId": 1,
+      "id": 2
     }
   ],
   "purchases": [
     {
       "userId": 3,
-      "carvingId": [2],
+      "carvingId": [
+        2
+      ],
       "name": "fbbcvbsdsd",
       "address": "vbvbcvbsdsdsd",
       "city": "vbvbvsdsd",
@@ -99,7 +106,9 @@
     },
     {
       "userId": 3,
-      "carvingId": [2],
+      "carvingId": [
+        2
+      ],
       "name": "jnsjkn",
       "address": "sklmlkmksmd4251",
       "city": "smklksmmsk",
