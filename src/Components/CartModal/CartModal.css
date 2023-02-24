@@ -30,4 +30,11 @@
 .cart-wrapper > button {
   display: block;
   margin: auto;
+  border: none;
+  background-color: saddlebrown;
+  height: 40px;
+  width: 100px;
+  border-radius: 50px;
+  color: white;
+  cursor: pointer;
 }

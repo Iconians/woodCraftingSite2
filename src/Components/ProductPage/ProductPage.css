@@ -1,3 +1,25 @@
+.product-img-wrapper { 
+  position: relative;
+  width: fit-content;
+}
+
 .product-img-wrapper > img {
   width: 300px;
+}
+
+.heart-icon {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 26px;
+}
+
+.buttons-container > button {
+  border: none;
+  background-color: saddlebrown;
+  height: 40px;
+  width: 150px;
+  border-radius: 50px;
+  color: white;
+  cursor: pointer;
 }

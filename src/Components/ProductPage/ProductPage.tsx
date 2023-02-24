@@ -1,3 +1,5 @@
+import { faHeart, faHeartBroken } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useState } from "react";
 import { toast } from "react-hot-toast";
 import { useLocation } from "react-router-dom";
@@ -35,14 +37,13 @@ export const ProductPage = () => {
     }
   };
 
-  const addToFavorites = (e: any) => {
-    const id = e.target.id;
+  const addFavorites = (id: number) => {
     const userId = getUserId();
-    addFavorite(userId, parseInt(id)).then((res) => {
+    addFavorite(userId, id).then((res) => {
       if (res.ok) {
         setFavoriteArray([
           ...favoriteArray,
-          { userId: userId, carvingId: parseInt(id), id: 0 },
+          { userId: userId, carvingId: id, id: 0 },
         ]);
       } else {
         toast.error(
@@ -52,18 +53,15 @@ export const ProductPage = () => {
     });
   };
 
-  const deleteAFavorites = (e: any) => {
-    const id = e.target.id;
+  const deleteFavorites = (id: number) => {
     const getFavorite = favoriteArray.find(
-      (favorite) => favorite.carvingId === parseInt(id)
+      (favorite) => favorite.carvingId === id
     );
     if (getFavorite !== undefined) {
       deleteFetch(getFavorite).then((res) => {
         if (res.ok) {
           setFavoriteArray(
-            favoriteArray.filter(
-              (carving) => carving.carvingId !== parseInt(id)
-            )
+            favoriteArray.filter((carving) => carving.carvingId !== id)
           );
         } else {
           toast.error(
@@ -99,20 +97,28 @@ export const ProductPage = () => {
             </div>
             <div className="product-img-wrapper">
               <img src={carving.image} alt="" />
+              {favoriteArray.length ? (
+                <FontAwesomeIcon
+                  icon={faHeart}
+                  className="heart-icon"
+                  onClick={() => {
+                    deleteFavorites(carving.id);
+                  }}
+                />
+              ) : (
+                <FontAwesomeIcon
+                  icon={faHeartBroken}
+                  className="heart-icon"
+                  onClick={() => {
+                    addFavorites(carving.id);
+                  }}
+                />
+              )}
             </div>
             <div className="story-div">
               <p>{carving.story}</p>
             </div>
             <div className="buttons-container">
-              {favoriteArray.length ? (
-                <button id={`${carving.id}`} onClick={deleteAFavorites}>
-                  unFavorite
-                </button>
-              ) : (
-                <button id={`${carving.id}`} onClick={addToFavorites}>
-                  Favorite
-                </button>
-              )}
               {carving.price ? (
                 <>
                   {carving.qty === 0 ? (
