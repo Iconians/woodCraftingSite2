@@ -13,8 +13,12 @@ import { newUser, Users } from "../interfaces";
 interface AuthContextInterface {
   children?: ReactNode;
   user: object | newUser;
-  createUser: (user: newUser) => void;
-  signinUser: (email: string, password: string) => void;
+  createUser: (user: newUser, redirectToHome: () => void) => void;
+  signinUser: (
+    email: string,
+    password: string,
+    redirectToHome: () => void
+  ) => void;
   signoutUser: () => void;
 }
 
@@ -23,7 +27,7 @@ const AuthContext = createContext({} as AuthContextInterface);
 export const AuthProvider = ({ children }: AuthContextInterface) => {
   const [user, setUser] = useState<object | Users>({});
 
-  const createUser = (user: newUser) => {
+  const createUser = (user: newUser, redirectToHome: () => void) => {
     fetchUsers().then((data) => {
       const checkForUsers = data.find((item) => item.email === user.email);
       if (!checkForUsers) {
@@ -32,6 +36,7 @@ export const AuthProvider = ({ children }: AuthContextInterface) => {
             if (response.ok) {
               localStorage.setItem("user", JSON.stringify(user));
               setUser(user);
+              redirectToHome();
               toast.success("Created and Account and Logged In");
             }
           })
@@ -42,13 +47,18 @@ export const AuthProvider = ({ children }: AuthContextInterface) => {
     });
   };
 
-  const signinUser = (email: string, password: string) => {
+  const signinUser = (
+    email: string,
+    password: string,
+    redirectToHome: () => void
+  ) => {
     fetchUsers().then((data) => {
       const findAccount = data.find((item) => item.email === email);
       if (findAccount !== undefined) {
         if (findAccount.password === password) {
           localStorage.setItem("user", JSON.stringify(findAccount));
           setUser(findAccount);
+          redirectToHome();
           toast.success("signed In");
         } else {
           toast.error("Incorrect Password");

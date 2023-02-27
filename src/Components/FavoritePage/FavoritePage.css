@@ -1,0 +1,12 @@
+.heading-wrapper {
+  text-align: center;
+  color: white;
+}
+
+.favorites-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.favorites-wrapper > h3 {color: white;} 

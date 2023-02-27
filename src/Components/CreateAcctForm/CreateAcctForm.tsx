@@ -6,6 +6,7 @@ import { toast } from "react-hot-toast";
 
 interface props {
   changeForm: () => void;
+  redirectToHome: () => void;
 }
 
 const formData = [
@@ -40,7 +41,7 @@ const formData = [
   },
 ];
 
-export const CreateAcctForm = ({ changeForm }: props) => {
+export const CreateAcctForm = ({ changeForm, redirectToHome }: props) => {
   const { createUser } = useAuthContext();
   const [name, setName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
@@ -73,7 +74,7 @@ export const CreateAcctForm = ({ changeForm }: props) => {
         email: email,
         password: password,
       };
-      createUser(newUser);
+      createUser(newUser, redirectToHome);
     } else {
       toast.error("passwords don't match");
     }

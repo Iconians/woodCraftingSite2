@@ -4,6 +4,7 @@ import { fetchFavoriteCarvings } from "../../messaround";
 import { useCarvingContext } from "../../providers/carvings.provider";
 import { NavBar } from "../NavBar/NavBar";
 import { ProductHolder } from "../ProductHolder/ProductHolder";
+import "./FavoritePage.css";
 // find bug that's affecting the refresh btn
 
 export const FavoritePage = () => {
@@ -38,7 +39,7 @@ export const FavoritePage = () => {
           ))
         ) : (
           <h3>
-            It looks like you don't have any favorites, please go and find some{" "}
+            It's lonely in here, please go and find some carving's you like{" "}
           </h3>
         )}
       </div>

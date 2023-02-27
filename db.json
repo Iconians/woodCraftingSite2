@@ -85,6 +85,11 @@
       "userId": 4,
       "carvingId": 1,
       "id": 2
+    },
+    {
+      "userId": 4,
+      "carvingId": 2,
+      "id": 3
     }
   ],
   "purchases": [
@@ -119,20 +124,6 @@
       "expMonthDate": "Jan",
       "expYearDate": "2023",
       "id": 2
-    },
-    {
-      "userId": 4,
-      "carvingId": [],
-      "name": "dcvccxv",
-      "address": "dsscv",
-      "city": "dvdddddcvcx",
-      "state": "AL : Alabama",
-      "zip": "51110",
-      "cardType": "VISA",
-      "cardNumbers": "4132 1351 3513 5135",
-      "expMonthDate": "Mar",
-      "expYearDate": "2023",
-      "id": 3
     }
   ]
 }

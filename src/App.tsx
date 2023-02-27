@@ -9,6 +9,7 @@ import { Toaster } from "react-hot-toast";
 import { CheckoutPage } from "./Components/CheckoutPage/Checkoutpage";
 import { ConfirmationPage } from "./Components/ConfirmationPage/ConfirmationPage";
 import { FavoritePage } from "./Components/FavoritePage/FavoritePage";
+import { AddCarvingPage } from "./Components/AddCarvingPage/AddCarvingPage";
 
 function App() {
   return (
@@ -23,7 +24,8 @@ function App() {
               <Route path="/SignInPage" element={<SignInPage />} />
               <Route path="/CheckoutPage" element={<CheckoutPage />} />
               <Route path="/ConfirmationPage" element={<ConfirmationPage />} />
-              <Route path="/FavoritePage" element={<FavoritePage />}></Route>
+              <Route path="/FavoritePage" element={<FavoritePage />} />
+              <Route path="/addCarving" element={<AddCarvingPage />} />
             </Routes>
           </Router>
         </AuthProvider>

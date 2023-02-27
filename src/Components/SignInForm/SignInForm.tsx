@@ -4,9 +4,10 @@ import "./SignInForm.css";
 
 interface props {
   changeForm: () => void;
+  redirectToHome: () => void;
 }
 
-export const SignInForm = ({ changeForm }: props) => {
+export const SignInForm = ({ changeForm, redirectToHome }: props) => {
   const { signinUser } = useAuthContext();
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
@@ -26,7 +27,7 @@ export const SignInForm = ({ changeForm }: props) => {
   };
 
   const formSignin = () => {
-    signinUser(email, password);
+    signinUser(email, password, redirectToHome);
   };
 
   return (
