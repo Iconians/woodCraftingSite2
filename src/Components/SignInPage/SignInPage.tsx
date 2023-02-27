@@ -6,13 +6,17 @@ import "./SignInPage.css";
 export const SignInPage = () => {
   const [createAcct, setCreateAcct] = useState<boolean>(false);
   const changeForms = () => {
-    setCreateAcct(true);
+    if (createAcct === false) {
+      setCreateAcct(true);
+    } else {
+      setCreateAcct(false);
+    }
   };
   return (
     <>
       <NavBar />
       {createAcct ? (
-        <CreateAcctForm />
+        <CreateAcctForm changeForm={changeForms} />
       ) : (
         <SignInForm changeForm={changeForms} />
       )}

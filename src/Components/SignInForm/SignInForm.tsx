@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useAuthContext } from "../../providers/auth.provider";
+import "./SignInForm.css";
 
 interface props {
   changeForm: () => void;
@@ -59,7 +60,9 @@ export const SignInForm = ({ changeForm }: props) => {
           <input type="submit" value="Sign In" />
         </form>
         <div>
-          <button onClick={changeForm}>Create Account</button>
+          <button className="signinBtn" onClick={changeForm}>
+            Create Account
+          </button>
         </div>
       </div>
     </div>

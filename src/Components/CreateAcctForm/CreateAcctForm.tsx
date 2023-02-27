@@ -4,6 +4,10 @@ import { useState } from "react";
 import { useAuthContext } from "../../providers/auth.provider";
 import { toast } from "react-hot-toast";
 
+interface props {
+  changeForm: () => void;
+}
+
 const formData = [
   {
     labelName: "name",
@@ -36,7 +40,7 @@ const formData = [
   },
 ];
 
-export const CreateAcctForm = () => {
+export const CreateAcctForm = ({ changeForm }: props) => {
   const { createUser } = useAuthContext();
   const [name, setName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
@@ -122,6 +126,11 @@ export const CreateAcctForm = () => {
               <input type="submit" value="Create Account" />
             </>
           </form>
+          <div>
+            <button className="signinBtn createAcctBtn" onClick={changeForm}>
+              Sign In
+            </button>
+          </div>
         </div>
       </div>
     </div>
