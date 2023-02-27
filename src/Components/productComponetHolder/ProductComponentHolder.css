@@ -1,13 +1,17 @@
 .component-holder-wrapper {
-  border: 3px solid black;
+  border: 3px solid white;
   width: 95%;
   padding: 20px;
-  margin: 20px 0;
+  margin: 20px auto;
 }
 
 .h3-wrapper {
   text-align: center;
 }
+
+.h3-wrapper > h3 {
+  margin-top: 0;
+} 
 
 .product-holder-container {
   display: flex;

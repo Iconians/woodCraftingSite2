@@ -13,6 +13,7 @@ import {
   securityCodeValidation,
 } from "../../validations";
 import { NavBar } from "../NavBar/NavBar";
+import "./CheckoutPage.css";
 // restructure code, escpecially the tsx
 
 export const CheckoutPage = () => {
@@ -35,7 +36,7 @@ export const CheckoutPage = () => {
     setTotal(parseInt(location.state.subtotal) + 12.99);
   };
 
-  const findDebitCardType = (cardNumber) => {
+  const findDebitCardType = (cardNumber: string) => {
     const regexPattern = {
       MASTERCARD: /^5[1-5][0-9]{1,}|^2[2-7][0-9]{1,}$/,
       VISA: /^4[0-9]{2,}$/,
@@ -176,13 +177,13 @@ export const CheckoutPage = () => {
     <div className="checkout-page-wrapper">
       <NavBar />
       <div className="form-info-wrapper">
-        <h2>Shipping Information</h2>
         <form
           onSubmit={(e) => {
             e.preventDefault();
             recordPurchase();
           }}
         >
+          <h2>Shipping Information</h2>
           {inputData.map((input) => (
             <>
               <label htmlFor={input.name}>{input.label}</label>
@@ -265,7 +266,6 @@ export const CheckoutPage = () => {
         </form>
       </div>
       <div className="total-wrapper">
-        <h2>Total</h2>
         <div>
           <h3>subtotal</h3>
           <p>{location.state.subtotal}</p>

@@ -1,0 +1,16 @@
+.confirmation-page-wrapper {
+  height: 100vh;
+  position: relative;
+}
+
+.confirmation-div {
+  width: 500px;
+  background-color: saddlebrown;
+  position: absolute;
+  left: 37%;
+  top: 50%;
+  padding: 50px;
+  border-radius: 10%;
+  color: white;
+  font-size: 18px;
+}

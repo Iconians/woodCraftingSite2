@@ -15,6 +15,7 @@ export const ProductPage = () => {
   const location = useLocation();
   const { carvingArray, addPurchaseItems } = useCarvingContext();
   const [favoriteArray, setFavoriteArray] = useState<Favorite[]>([]);
+  const [carvingQty, setCarvingQty] = useState(1);
 
   const getUserId = () => {
     const user = localStorage.getItem("user");
@@ -24,9 +25,17 @@ export const ProductPage = () => {
     }
   };
 
-  const findFavorites = (
-    favsArray: { carvingId: number; userId: number; id: number }[]
-  ) => {
+  const inStock = (carving: Favorite[]) => {
+    const findId = carving.find((id) => id.carvingId);
+    const getQty = carvingArray.find(
+      (carvingPiece) => carvingPiece.id === findId?.carvingId
+    );
+    if (getQty !== undefined && carvingQty !== 0) {
+      setCarvingQty(getQty.qty);
+    }
+  };
+
+  const findFavorites = (favsArray: Favorite[]) => {
     const userId = getUserId();
     const favs = favsArray.filter((favorite) => favorite.userId === userId);
     const carving = favs.filter(
@@ -35,6 +44,7 @@ export const ProductPage = () => {
     if (carving.length) {
       setFavoriteArray(carving);
     }
+    inStock(carving);
   };
 
   const addFavorites = (id: number) => {
@@ -77,6 +87,7 @@ export const ProductPage = () => {
     const findItem = carvingArray.find(
       (carving) => carving.id === parseInt(id)
     );
+    setCarvingQty(0);
     addPurchaseItems(findItem);
   };
 
@@ -89,53 +100,49 @@ export const ProductPage = () => {
   return (
     <div className="product-page-wrapper" id="productPage">
       <NavBar />
-      {carvingArray.map((carving) =>
-        carving.id === location.state.productId ? (
-          <>
-            <div className="h2-wrapper" key={carving.id}>
-              <h2>{carving.carvingName}</h2>
-            </div>
-            <div className="product-img-wrapper">
-              <img src={carving.image} alt="" />
-              {favoriteArray.length ? (
-                <FontAwesomeIcon
-                  icon={faHeart}
-                  className="heart-icon"
-                  onClick={() => {
-                    deleteFavorites(carving.id);
-                  }}
-                />
-              ) : (
-                <FontAwesomeIcon
-                  icon={faHeartBroken}
-                  className="heart-icon"
-                  onClick={() => {
-                    addFavorites(carving.id);
-                  }}
-                />
-              )}
-            </div>
-            <div className="story-div">
-              <p>{carving.story}</p>
-            </div>
-            <div className="buttons-container">
-              {carving.price ? (
-                <>
-                  {carving.qty === 0 ? (
-                    <p>out of stock</p>
-                  ) : (
-                    <button
-                      id={`${carving.id}`}
-                      onClick={addItemToCart}
-                      disabled={carving.qty === 0}
-                    >{`Add to Cart $${carving.price.toFixed(2)}`}</button>
-                  )}
-                </>
-              ) : null}
-            </div>
-          </>
-        ) : null
-      )}
+      <div className="page-content-wrapper">
+        {carvingArray.map((carving) =>
+          carving.id === location.state.productId ? (
+            <>
+              <div className="h2-wrapper" key={carving.id}>
+                <h2>{carving.carvingName}</h2>
+              </div>
+              <div className="product-img-wrapper">
+                <img src={carving.image} alt="" />
+                {favoriteArray.length ? (
+                  <FontAwesomeIcon
+                    icon={faHeart}
+                    className="heart-icon"
+                    onClick={() => {
+                      deleteFavorites(carving.id);
+                    }}
+                  />
+                ) : (
+                  <FontAwesomeIcon
+                    icon={faHeartBroken}
+                    className="heart-icon"
+                    onClick={() => {
+                      addFavorites(carving.id);
+                    }}
+                  />
+                )}
+              </div>
+              <div className="story-div">
+                <p>{carving.story}</p>
+              </div>
+              <div className="buttons-container">
+                {carving.price ? (
+                  <button
+                    id={`${carving.id}`}
+                    onClick={addItemToCart}
+                    disabled={carvingQty === 0}
+                  >{`Add to Cart $${carving.price.toFixed(2)}`}</button>
+                ) : null}
+              </div>
+            </>
+          ) : null
+        )}
+      </div>
     </div>
   );
 };

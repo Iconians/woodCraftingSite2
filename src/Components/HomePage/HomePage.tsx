@@ -1,6 +1,7 @@
 import { useCarvingContext } from "../../providers/carvings.provider";
 import { NavBar } from "../NavBar/NavBar";
 import { ProductComponentHolder } from "../productComponetHolder/ProductComponentHolder";
+import "./HomePage.css";
 
 const componentHolder = [
   {

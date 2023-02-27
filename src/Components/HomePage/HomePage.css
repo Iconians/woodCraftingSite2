@@ -1,0 +1,15 @@
+html, body {
+  background-image: url("/src/assets/yasmine-duchesne-XD4Gs2NGy2c-unsplash.jpg");
+  margin: 0;
+  padding: 0;
+}
+
+.site-wrapper {
+  color: white;
+}
+
+.disclaimer {
+  width: fit-content;
+  margin: auto;
+  font-size: 20px;
+}

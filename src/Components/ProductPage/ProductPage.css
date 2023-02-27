@@ -1,10 +1,27 @@
+.product-page-wrapper {
+  background-image: url("/src/assets/yasmine-duchesne-XD4Gs2NGy2c-unsplash.jpg");
+  padding-bottom: 50px;
+}
+
+.page-content-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.h2-wrapper {
+  margin-top: 50px;
+  color: white;
+}
+
 .product-img-wrapper { 
   position: relative;
   width: fit-content;
 }
 
 .product-img-wrapper > img {
-  width: 300px;
+  width: 600px;
+  border-radius: 10px;
 }
 
 .heart-icon {
@@ -12,14 +29,22 @@
   top: 20px;
   right: 20px;
   font-size: 26px;
+  color: #FFC0CB;
+}
+
+.story-div {
+  width: 850px;
+  font-size: 20px;
+  color: white;
 }
 
 .buttons-container > button {
   border: none;
   background-color: saddlebrown;
   height: 40px;
-  width: 150px;
+  width: 250px;
   border-radius: 50px;
   color: white;
   cursor: pointer;
+  font-size: 20px;
 }
