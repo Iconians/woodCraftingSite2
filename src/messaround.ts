@@ -1,21 +1,4 @@
 import { fetchFavorites } from "./fetches/fetchFavorites";
+import { fetchCarvings } from "./fetches/getCarvings";
 import { Carving } from "./interfaces";
-
-export const fetchFavoriteCarvings = (
-  userId: number
-  // carvingArray: Carving[]
-) => {
-  // let arr: Carving[] = [];
-  return fetchFavorites().then((favorites) => {
-    favorites
-      .filter((favorite) => favorite.userId === userId)
-      .map((favorite) => favorite.id);
-  });
-};
-
-//       let findCarving = carvingArray.find(
-// (carving) => carving.id === favorite.carvingId
-// );
-// if (findCarving !== undefined) arr.push(findCarving);
-// console.log(arr);
-// return arr;
+// carvingArray: Carving[])

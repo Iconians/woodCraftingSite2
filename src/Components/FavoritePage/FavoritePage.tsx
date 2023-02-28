@@ -1,30 +1,18 @@
 import { useEffect, useState } from "react";
 import { Carving } from "../../interfaces";
-import { fetchFavoriteCarvings } from "../../messaround";
-import { useCarvingContext } from "../../providers/carvings.provider";
+import { useFavoriteContext } from "../../providers/favorites.provider";
 import { NavBar } from "../NavBar/NavBar";
 import { ProductHolder } from "../ProductHolder/ProductHolder";
 import "./FavoritePage.css";
-// find bug that's affecting the refresh btn
 
 export const FavoritePage = () => {
-  const { carvingArray } = useCarvingContext();
+  const { fetchFavoriteCarvings } = useFavoriteContext();
   const [favorites, setFavorites] = useState<Carving[]>([]);
 
-  const getUserId = () => {
-    const user = localStorage.getItem("user");
-    if (user !== null) {
-      const userId = JSON.parse(user)["id"];
-      return userId;
-    }
-  };
-
   useEffect(() => {
-    const user = getUserId();
-    fetchFavoriteCarvings(user).then(
-      (data) => {}
-      // setFavorites(data)
-    );
+    fetchFavoriteCarvings().then((data) => {
+      setFavorites(data);
+    });
   }, []);
 
   return (
@@ -36,7 +24,11 @@ export const FavoritePage = () => {
       <div className="favorites-wrapper">
         {favorites.length ? (
           favorites.map((carving) => (
-            <ProductHolder img={carving.image} id={carving.id} />
+            <ProductHolder
+              img={carving.image}
+              id={carving.id}
+              key={carving.id}
+            />
           ))
         ) : (
           <h3>

@@ -10,26 +10,32 @@ import { CheckoutPage } from "./Components/CheckoutPage/Checkoutpage";
 import { ConfirmationPage } from "./Components/ConfirmationPage/ConfirmationPage";
 import { FavoritePage } from "./Components/FavoritePage/FavoritePage";
 import { AddCarvingPage } from "./Components/AddCarvingPage/AddCarvingPage";
+import { FavoriteProvider } from "./providers/favorites.provider";
 
 function App() {
   return (
     <div className="App">
-      <CarvingProvider carvingArray={[]} addPurchaseItems cartItems={[]}>
-        <AuthProvider user createUser signinUser signoutUser>
-          <Toaster />
-          <Router>
-            <Routes>
-              <Route path="/" element={<HomePage />} />
-              <Route path="/ProductPage" element={<ProductPage />} />
-              <Route path="/SignInPage" element={<SignInPage />} />
-              <Route path="/CheckoutPage" element={<CheckoutPage />} />
-              <Route path="/ConfirmationPage" element={<ConfirmationPage />} />
-              <Route path="/FavoritePage" element={<FavoritePage />} />
-              <Route path="/addCarving" element={<AddCarvingPage />} />
-            </Routes>
-          </Router>
-        </AuthProvider>
-      </CarvingProvider>
+      <FavoriteProvider fetchFavoriteCarvings favoriteArray setFavorites>
+        <CarvingProvider carvingArray={[]} addPurchaseItems cartItems={[]}>
+          <AuthProvider user createUser signinUser signoutUser>
+            <Toaster />
+            <Router>
+              <Routes>
+                <Route path="/" element={<HomePage />} />
+                <Route path="/ProductPage" element={<ProductPage />} />
+                <Route path="/SignInPage" element={<SignInPage />} />
+                <Route path="/CheckoutPage" element={<CheckoutPage />} />
+                <Route
+                  path="/ConfirmationPage"
+                  element={<ConfirmationPage />}
+                />
+                <Route path="/FavoritePage" element={<FavoritePage />} />
+                <Route path="/addCarving" element={<AddCarvingPage />} />
+              </Routes>
+            </Router>
+          </AuthProvider>
+        </CarvingProvider>
+      </FavoriteProvider>
     </div>
   );
 }

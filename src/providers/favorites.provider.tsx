@@ -1,50 +1,60 @@
-import React, {
-  createContext,
-  ReactNode,
-  useContext,
-  useEffect,
-  useState,
-} from "react";
+import React, { createContext, ReactNode, useContext, useState } from "react";
 import { fetchFavorites } from "../fetches/fetchFavorites";
-// having trouble intergrting this provider with product page and favorite page
+import { fetchCarvings } from "../fetches/getCarvings";
+import { Carving, Favorite } from "../interfaces";
+// having trouble intergrting this provider with product page
 
 interface FavoriteContextInterface {
   children?: ReactNode;
-  favoriteArray: { carvingId: number; userId: number; id: number }[];
-  // setFavoriteArray: React.Dispatch<React.SetStateAction<never[]>>;
-  setFavorites: (favorites: []) => void;
+  // carvings: Carving[];
+  fetchFavoriteCarvings: () => Promise<Carving[]>;
+  // setCarvings: (favorites: []) => void;
 }
 
 const FavoritesContext = createContext({} as FavoriteContextInterface);
 
 export const FavoriteProvider = ({ children }: FavoriteContextInterface) => {
-  const [favoriteArray, setFavoriteArray] = useState([]);
+  // const [unUsedCarvings, setCarvings] = useState<Carving[]>([]);
 
-  const setFavorites = (favorites: []) => {
-    console.log("hello");
-    setFavoriteArray(favorites);
-  };
-
-  // const getUserId = () => {
-  //   const user = localStorage.getItem("user");
-  //   if (user !== null) {
-  //     const userId = JSON.parse(user)["id"];
-  //     return userId;
-  //   }
+  // const setFavorites = (favorites: []) => {
+  //   console.log("hello");
+  //   setFavoriteArray(favorites);
   // };
 
-  // useEffect(() => {
-  //   fetchFavorites().then((data) => {
-  //     setFavoriteArray;
-  //   });
-  //   console.log(favoriteArray);
-  // }, []);
+  const getUserId = () => {
+    const user = localStorage.getItem("user");
+    if (user !== null) {
+      const userId = JSON.parse(user)["id"];
+      return userId;
+    }
+  };
+
+  const findFavorites = (favorites: Favorite[], carvings: Carving[]) => {
+    const user = getUserId();
+    let arr: Carving[] = [];
+    favorites
+      .filter((favorite) => favorite.userId === user)
+      .map((favorite) => {
+        let findCarving = carvings.find(
+          (carving) => carving.id === favorite.carvingId
+        );
+        if (findCarving !== undefined) arr.push(findCarving);
+      });
+    return arr;
+  };
+
+  const fetchFavoriteCarvings = async () => {
+    const carvings = await fetchCarvings();
+    const favorites = await fetchFavorites();
+    return findFavorites(favorites, carvings);
+  };
 
   return (
     <FavoritesContext.Provider
       value={{
-        favoriteArray,
-        setFavorites,
+        // carvings,
+        // setCarvings,
+        fetchFavoriteCarvings,
       }}
     >
       {children}
@@ -55,7 +65,8 @@ export const FavoriteProvider = ({ children }: FavoriteContextInterface) => {
 export const useFavoriteContext = () => {
   const context = useContext(FavoritesContext);
   return {
-    favoriteArray: context.favoriteArray,
-    setFavorites: context.setFavorites,
+    // carvings: context.carvings,
+    // setCarvings: context.setCarvings,
+    fetchFavoriteCarvings: context.fetchFavoriteCarvings,
   };
 };
