@@ -21,8 +21,9 @@ export const FavoritePage = () => {
 
   useEffect(() => {
     const user = getUserId();
-    fetchFavoriteCarvings(user, carvingArray).then((data) =>
-      setFavorites(data)
+    fetchFavoriteCarvings(user).then(
+      (data) => {}
+      // setFavorites(data)
     );
   }, []);
 

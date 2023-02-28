@@ -2,6 +2,7 @@ import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
 import { useAuthContext } from "../../providers/auth.provider";
+import { AddCarvingPage } from "../AddCarvingPage/AddCarvingPage";
 import "./NavAcctBtn.css";
 
 interface props {
@@ -20,6 +21,10 @@ export const NavAcctBtn = ({ openCartModal }: props) => {
       <div className="acct-btn-wrapper">
         <Link className="acct-favorite-btn" to={"/FavoritePage"}>
           Favorites
+        </Link>
+        <Link to={"/addCarving"} className="acct-favorite-btn">
+          {" "}
+          Add Carving
         </Link>
         <a onClick={signOut}>Sign Out</a>
       </div>
