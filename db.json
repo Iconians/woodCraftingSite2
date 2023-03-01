@@ -52,7 +52,7 @@
   "carvings": [
     {
       "id": 1,
-      "image": "https://upload.wikimedia.org/wikipedia/commons/a/ab/Bioengineered_obese_mouse%2C_Aberdeen%2C_Scotland%2C_1998_Wellcome_L0060083.jpg",
+      "image": "src/assets/bear.jpg",
       "carvingName": "carving",
       "userId": 3,
       "carverName": "users name",
@@ -64,14 +64,14 @@
     },
     {
       "id": 2,
-      "image": "https://upload.wikimedia.org/wikipedia/commons/a/ab/Bioengineered_obese_mouse%2C_Aberdeen%2C_Scotland%2C_1998_Wellcome_L0060083.jpg",
+      "image": "src/assets/chairWithDog.jpg",
       "carvingName": "carving",
       "userId": 3,
       "carverName": "users name",
       "availableToPurchase": true,
       "story": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
       "type": "machineCarved",
-      "price": 59,
+      "price": 269,
       "qty": 1
     }
   ],
@@ -95,9 +95,7 @@
   "purchases": [
     {
       "userId": 3,
-      "carvingId": [
-        2
-      ],
+      "carvingId": [2],
       "name": "fbbcvbsdsd",
       "address": "vbvbcvbsdsdsd",
       "city": "vbvbvsdsd",
@@ -111,9 +109,7 @@
     },
     {
       "userId": 3,
-      "carvingId": [
-        2
-      ],
+      "carvingId": [2],
       "name": "jnsjkn",
       "address": "sklmlkmksmd4251",
       "city": "smklksmmsk",

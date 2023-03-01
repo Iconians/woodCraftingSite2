@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { carvingPictures } from "../../assets/carvingPictures";
+import { useFavoriteContext } from "../../providers/favorites.provider";
 import { NavBar } from "../NavBar/NavBar";
 import "./AddCarvingPage.css";
 
@@ -8,24 +10,19 @@ const inputs = [
     type: "text",
     placeHolder: "Carving Name",
     name: "carvingName",
-    // value: carvingName,
-  },
-  {
-    labelName: "Image file",
-    type: "file",
-    id: "file-label",
-    inputId: "file-input",
-    name: "file",
   },
   {
     type: "radio",
     labelName: "Hand Carved",
     name: "typeOfCarving",
+    value: "handCarving",
+    checked: true,
   },
   {
     type: "radio",
     labelName: "Machined Carved",
     name: "typeOfCarving",
+    value: "machinedCarving",
   },
   {
     type: "radio",
@@ -36,12 +33,13 @@ const inputs = [
 
 export const AddCarvingPage = () => {
   const [carvingName, setCarvingName] = useState("");
-  const [image, setImage] = useState("");
-  const [handCarved, setHandCarved] = useState(false);
+  const [image, setImage] = useState(carvingPictures.bear);
+  const [handCarved, setHandCarved] = useState(true);
   const [machinedCarved, setMachinedCarved] = useState(false);
   const [availableToSell, setAvailableToSell] = useState(false);
   const [price, setPrice] = useState("");
   const [story, setStory] = useState("");
+  const { getUserId } = useFavoriteContext();
 
   const captureInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     const name = e.target.name;
@@ -50,16 +48,14 @@ export const AddCarvingPage = () => {
       case "carvingName":
         setCarvingName(value);
         break;
-      case "file":
-        setImage(value);
-        break;
       case "typeOfCarving":
-        setHandCarved(false);
-        setMachinedCarved(false);
-        break;
-      case "typeOfCarving":
-        setHandCarved(false);
-        setMachinedCarved(false);
+        if (value === "handCarving") {
+          setHandCarved(true);
+          setMachinedCarved(false);
+        } else {
+          setMachinedCarved(true);
+          setHandCarved(false);
+        }
         break;
       case "sellCarving":
         setAvailableToSell(true);
@@ -70,6 +66,28 @@ export const AddCarvingPage = () => {
     }
   };
 
+  const getUserName = () => {
+    const user = localStorage.getItem("user");
+    if (user !== null) {
+      const userId = JSON.parse(user)["name"];
+      return userId;
+    }
+  };
+
+  const newCarving = () => {
+    const carving = {
+      carvingName: carvingName,
+      image: image,
+      story: story,
+      type: handCarved ? handCarved : machinedCarved,
+      price: price.length ? price : null,
+      userId: getUserId(),
+      carversName: getUserName(),
+      qty: 1,
+    };
+    console.log(carving);
+  };
+
   return (
     <div className="add-carving-page-wrapper">
       <NavBar />
@@ -77,18 +95,20 @@ export const AddCarvingPage = () => {
         <h2>Upload your Carving</h2>
       </div>
       <div className="form-wrapper">
-        <form action="">
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            newCarving();
+          }}
+        >
           {inputs.map((input) =>
             input.type !== "radio" ? (
               <>
-                <label htmlFor={input.name} id={input.id}>
-                  {input.labelName}
-                </label>
+                <label htmlFor={input.name}>{input.labelName}</label>
                 <input
                   name={input.name}
                   type={input.type}
                   placeholder={input.placeHolder}
-                  id={input.inputId}
                   onChange={captureInput}
                 />
               </>
@@ -98,6 +118,7 @@ export const AddCarvingPage = () => {
                   name={input.name}
                   type={input.type}
                   placeholder={input.placeHolder}
+                  value={input.value}
                   onChange={captureInput}
                 />
                 <label htmlFor={input.name}>{input.labelName}</label>
@@ -115,6 +136,18 @@ export const AddCarvingPage = () => {
               />
             </>
           ) : null}
+          <label htmlFor="image">Image</label>
+          <select
+            name="image"
+            id=""
+            onChange={(e) => {
+              setImage(e.target.value);
+            }}
+          >
+            {Object.entries(carvingPictures).map(([label, pictureValue]) => {
+              return <option value={pictureValue}>{label}</option>;
+            })}
+          </select>
           <label htmlFor="story" className="textarea-label">
             Write your Story
           </label>

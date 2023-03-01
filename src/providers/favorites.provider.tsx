@@ -9,6 +9,7 @@ interface FavoriteContextInterface {
   // carvings: Carving[];
   fetchFavoriteCarvings: () => Promise<Carving[]>;
   // setCarvings: (favorites: []) => void;
+  getUserId: () => any;
 }
 
 const FavoritesContext = createContext({} as FavoriteContextInterface);
@@ -55,6 +56,7 @@ export const FavoriteProvider = ({ children }: FavoriteContextInterface) => {
         // carvings,
         // setCarvings,
         fetchFavoriteCarvings,
+        getUserId,
       }}
     >
       {children}
@@ -67,6 +69,7 @@ export const useFavoriteContext = () => {
   return {
     // carvings: context.carvings,
     // setCarvings: context.setCarvings,
+    getUserId: context.getUserId,
     fetchFavoriteCarvings: context.fetchFavoriteCarvings,
   };
 };
