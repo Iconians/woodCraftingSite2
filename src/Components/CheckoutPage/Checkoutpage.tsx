@@ -6,6 +6,7 @@ import { listOfMonths } from "../../listOfMonths";
 import { listOfStates } from "../../ListOfStates";
 import { listOfYears } from "../../listOfYears";
 import { useCarvingContext } from "../../providers/carvings.provider";
+import { useFavoriteContext } from "../../providers/favorites.provider";
 import {
   cardNumberValidation,
   onlyNumberValidation,
@@ -31,6 +32,7 @@ export const CheckoutPage = () => {
   const [cardLength, setCardLength] = useState(19);
   const [cardType, setCardType] = useState("");
   const { cartItems } = useCarvingContext();
+  const { getUserId } = useFavoriteContext();
 
   const findTotal = () => {
     setTotal(parseInt(location.state.subtotal) + 12.99);
@@ -139,13 +141,13 @@ export const CheckoutPage = () => {
     },
   ];
 
-  const getUserId = () => {
-    const user = localStorage.getItem("user");
-    if (user !== null) {
-      const userId = JSON.parse(user)["id"];
-      return userId;
-    }
-  };
+  // const getUserId = () => {
+  //   const user = localStorage.getItem("user");
+  //   if (user !== null) {
+  //     const userId = JSON.parse(user)["id"];
+  //     return userId;
+  //   }
+  // };
 
   const navigate = useNavigate();
 

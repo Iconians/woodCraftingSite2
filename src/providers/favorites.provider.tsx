@@ -2,26 +2,17 @@ import React, { createContext, ReactNode, useContext, useState } from "react";
 import { fetchFavorites } from "../fetches/fetchFavorites";
 import { fetchCarvings } from "../fetches/getCarvings";
 import { Carving, Favorite } from "../interfaces";
-// having trouble intergrting this provider with product page
 
 interface FavoriteContextInterface {
   children?: ReactNode;
-  // carvings: Carving[];
   fetchFavoriteCarvings: () => Promise<Carving[]>;
-  // setCarvings: (favorites: []) => void;
   getUserId: () => any;
+  // this is what I get when I hover over the getUserId
 }
 
 const FavoritesContext = createContext({} as FavoriteContextInterface);
 
 export const FavoriteProvider = ({ children }: FavoriteContextInterface) => {
-  // const [unUsedCarvings, setCarvings] = useState<Carving[]>([]);
-
-  // const setFavorites = (favorites: []) => {
-  //   console.log("hello");
-  //   setFavoriteArray(favorites);
-  // };
-
   const getUserId = () => {
     const user = localStorage.getItem("user");
     if (user !== null) {
@@ -53,8 +44,6 @@ export const FavoriteProvider = ({ children }: FavoriteContextInterface) => {
   return (
     <FavoritesContext.Provider
       value={{
-        // carvings,
-        // setCarvings,
         fetchFavoriteCarvings,
         getUserId,
       }}
@@ -67,8 +56,6 @@ export const FavoriteProvider = ({ children }: FavoriteContextInterface) => {
 export const useFavoriteContext = () => {
   const context = useContext(FavoritesContext);
   return {
-    // carvings: context.carvings,
-    // setCarvings: context.setCarvings,
     getUserId: context.getUserId,
     fetchFavoriteCarvings: context.fetchFavoriteCarvings,
   };

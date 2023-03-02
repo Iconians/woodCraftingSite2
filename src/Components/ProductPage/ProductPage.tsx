@@ -8,6 +8,7 @@ import { deleteFetch } from "../../fetches/deleteFetch";
 import { fetchFavorites } from "../../fetches/fetchFavorites";
 import { Favorite } from "../../interfaces";
 import { useCarvingContext } from "../../providers/carvings.provider";
+import { useFavoriteContext } from "../../providers/favorites.provider";
 import { NavBar } from "../NavBar/NavBar";
 import "./ProductPage.css";
 
@@ -16,14 +17,7 @@ export const ProductPage = () => {
   const { carvingArray, addPurchaseItems } = useCarvingContext();
   const [favoriteArray, setFavoriteArray] = useState<Favorite[]>([]);
   const [carvingQty, setCarvingQty] = useState(1);
-
-  const getUserId = () => {
-    const user = localStorage.getItem("user");
-    if (user !== null) {
-      const userId = JSON.parse(user)["id"];
-      return userId;
-    }
-  };
+  const { getUserId } = useFavoriteContext();
 
   const inStock = (carving: Favorite[]) => {
     const findId = carving.find((id) => id.carvingId);
@@ -82,7 +76,7 @@ export const ProductPage = () => {
     }
   };
 
-  const addItemToCart = (e: any) => {
+  const addItemToCart = (e: React.MouseEvent<HTMLButtonElement>) => {
     const id = e.target.id;
     const findItem = carvingArray.find(
       (carving) => carving.id === parseInt(id)

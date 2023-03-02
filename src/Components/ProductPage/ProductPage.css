@@ -1,5 +1,4 @@
 .product-page-wrapper {
-  background-image: url("/src/assets/yasmine-duchesne-XD4Gs2NGy2c-unsplash.jpg");
   padding-bottom: 50px;
 }
 
@@ -21,6 +20,7 @@
 
 .product-img-wrapper > img {
   width: 600px;
+  height: 600px;
   border-radius: 10px;
 }
 

@@ -15,4 +15,5 @@
 
 .product-holder-container {
   display: flex;
+  justify-content: space-around;
 }

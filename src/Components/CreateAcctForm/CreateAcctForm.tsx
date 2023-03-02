@@ -3,43 +3,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
 import { useAuthContext } from "../../providers/auth.provider";
 import { toast } from "react-hot-toast";
+import { createAcctForm } from "../../formInputData";
 
 interface props {
   changeForm: () => void;
   redirectToHome: () => void;
 }
-
-const formData = [
-  {
-    labelName: "name",
-    labeltext: "Name",
-    inputName: "formName",
-    type: "text",
-    placeHolder: "Name",
-  },
-  {
-    labelName: "email",
-    labeltext: "Email",
-    inputName: "email",
-    type: "email",
-    placeHolder: "Email",
-  },
-  {
-    labelName: "password",
-    labeltext: "Password",
-    inputName: "password",
-    type: "password",
-    placeHolder: "Password",
-    id: "eye",
-  },
-  {
-    labelName: "confirmpassword",
-    labeltext: "Confirm Password",
-    inputName: "confirmpassword",
-    type: "password",
-    placeHolder: "Confirm Password",
-  },
-];
 
 export const CreateAcctForm = ({ changeForm, redirectToHome }: props) => {
   const { createUser } = useAuthContext();
@@ -81,7 +50,7 @@ export const CreateAcctForm = ({ changeForm, redirectToHome }: props) => {
   };
 
   const handleEye = () => {
-    const input: any = document.getElementById("eye");
+    const input = document.getElementById("eye");
     if (input.type === "password") {
       input.type = "text";
     } else {
@@ -105,7 +74,7 @@ export const CreateAcctForm = ({ changeForm, redirectToHome }: props) => {
             }}
           >
             <>
-              {formData.map((input) => (
+              {createAcctForm.map((input) => (
                 <label htmlFor={input.labelName}>
                   {input.labeltext}
                   <input

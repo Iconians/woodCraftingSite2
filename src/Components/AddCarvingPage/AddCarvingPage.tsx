@@ -1,41 +1,16 @@
 import { useState } from "react";
+import { toast } from "react-hot-toast";
 import { carvingPictures } from "../../assets/carvingPictures";
+import { addCarvings } from "../../fetches/addCarving";
+import { addCarvingForm } from "../../formInputData";
 import { useFavoriteContext } from "../../providers/favorites.provider";
 import { NavBar } from "../NavBar/NavBar";
 import "./AddCarvingPage.css";
 
-const inputs = [
-  {
-    labelName: "Carving Name",
-    type: "text",
-    placeHolder: "Carving Name",
-    name: "carvingName",
-  },
-  {
-    type: "radio",
-    labelName: "Hand Carved",
-    name: "typeOfCarving",
-    value: "handCarving",
-    checked: true,
-  },
-  {
-    type: "radio",
-    labelName: "Machined Carved",
-    name: "typeOfCarving",
-    value: "machinedCarving",
-  },
-  {
-    type: "radio",
-    labelName: "Do you want to sell this carving?",
-    name: "sellCarving",
-  },
-];
-
 export const AddCarvingPage = () => {
   const [carvingName, setCarvingName] = useState("");
   const [image, setImage] = useState(carvingPictures.bear);
-  const [handCarved, setHandCarved] = useState(true);
-  const [machinedCarved, setMachinedCarved] = useState(false);
+  const [handCarved, setHandCarved] = useState<null | boolean>(null);
   const [availableToSell, setAvailableToSell] = useState(false);
   const [price, setPrice] = useState("");
   const [story, setStory] = useState("");
@@ -51,9 +26,7 @@ export const AddCarvingPage = () => {
       case "typeOfCarving":
         if (value === "handCarving") {
           setHandCarved(true);
-          setMachinedCarved(false);
         } else {
-          setMachinedCarved(true);
           setHandCarved(false);
         }
         break;
@@ -74,18 +47,38 @@ export const AddCarvingPage = () => {
     }
   };
 
+  const validations = () => {
+    if (!carvingName.length) {
+      toast.error("name your carving");
+      return false;
+    }
+    if (handCarved === null) {
+      toast.error("select your carving type");
+      return false;
+    }
+    if (!story.length) {
+      toast.error("write a description for your carving");
+      return false;
+    }
+    return true;
+  };
+
   const newCarving = () => {
-    const carving = {
-      carvingName: carvingName,
-      image: image,
-      story: story,
-      type: handCarved ? handCarved : machinedCarved,
-      price: price.length ? price : null,
-      userId: getUserId(),
-      carversName: getUserName(),
-      qty: 1,
-    };
-    console.log(carving);
+    const areInputsValid = validations();
+    if (areInputsValid === true) {
+      const carving = {
+        carvingName: carvingName,
+        image: image,
+        story: story,
+        type: handCarved ? "handCarved" : "machinedCarved",
+        availableToPurchase: availableToSell,
+        price: price.length ? parseInt(price) : null,
+        userId: getUserId(),
+        carversName: getUserName(),
+        qty: 1,
+      };
+      addCarvings(carving);
+    }
   };
 
   return (
@@ -101,7 +94,7 @@ export const AddCarvingPage = () => {
             newCarving();
           }}
         >
-          {inputs.map((input) =>
+          {addCarvingForm.map((input) =>
             input.type !== "radio" ? (
               <>
                 <label htmlFor={input.name}>{input.labelName}</label>
@@ -153,8 +146,8 @@ export const AddCarvingPage = () => {
           </label>
           <textarea
             name="story"
-            cols="30"
-            rows="10"
+            cols={30}
+            rows={10}
             className="textarea"
             onChange={(e) => setStory(e.target.value)}
           ></textarea>
