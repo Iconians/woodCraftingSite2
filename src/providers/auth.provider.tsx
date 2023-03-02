@@ -1,17 +1,10 @@
-import {
-  createContext,
-  ReactNode,
-  useContext,
-  useEffect,
-  useState,
-} from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import { addUserFetch } from "../fetches/addUser";
 import { toast } from "react-hot-toast";
 import { fetchUsers } from "../fetches/fetchUsers";
 import { newUser, Users } from "../interfaces";
 
 interface AuthContextInterface {
-  children?: ReactNode;
   user: object | newUser;
   createUser: (user: newUser, redirectToHome: () => void) => void;
   signinUser: (
@@ -22,9 +15,13 @@ interface AuthContextInterface {
   signoutUser: () => void;
 }
 
+type AuthProviderProps = {
+  children?: JSX.Element | JSX.Element[];
+};
+
 const AuthContext = createContext({} as AuthContextInterface);
 
-export const AuthProvider = ({ children }: AuthContextInterface) => {
+export const AuthProvider = ({ children }: AuthProviderProps) => {
   const [user, setUser] = useState<object | Users>({});
 
   const createUser = (user: newUser, redirectToHome: () => void) => {

@@ -76,13 +76,12 @@ export const ProductPage = () => {
     }
   };
 
-  const addItemToCart = (e: React.MouseEvent<HTMLButtonElement>) => {
-    const id = e.target.id;
+  const addItemToCart = (id: string) => {
     const findItem = carvingArray.find(
       (carving) => carving.id === parseInt(id)
     );
     setCarvingQty(0);
-    addPurchaseItems(findItem);
+    if (findItem !== undefined) addPurchaseItems(findItem);
   };
 
   useEffect(() => {
@@ -128,7 +127,9 @@ export const ProductPage = () => {
                 {carving.price ? (
                   <button
                     id={`${carving.id}`}
-                    onClick={addItemToCart}
+                    onClick={(e) => {
+                      addItemToCart(`${carving.id}`);
+                    }}
                     disabled={carvingQty === 0}
                   >{`Add to Cart $${carving.price.toFixed(2)}`}</button>
                 ) : null}

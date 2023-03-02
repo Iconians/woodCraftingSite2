@@ -59,7 +59,11 @@ export const cardNumberValidation = (cardNumber: string) => {
     DISCOVER: /^6(?:011|5[0-9]{2})[0-9]{3,}$/,
   };
   for (const card in regexPattern) {
-    if (!cardNumber.replace(/[^\d]/g, "").match(regexPattern[card])) {
+    if (
+      !cardNumber
+        .replace(/[^\d]/g, "")
+        .match(new RegExp(regexPattern[card as keyof typeof regexPattern]))
+    ) {
       continue;
     }
     if (cardNumber && card === "AMERICAN_EXPRESS") {

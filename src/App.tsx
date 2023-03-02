@@ -15,9 +15,9 @@ import { FavoriteProvider } from "./providers/favorites.provider";
 function App() {
   return (
     <div className="App">
-      <FavoriteProvider fetchFavoriteCarvings favoriteArray setFavorites>
-        <CarvingProvider carvingArray={[]} addPurchaseItems cartItems={[]}>
-          <AuthProvider user createUser signinUser signoutUser>
+      <FavoriteProvider>
+        <CarvingProvider>
+          <AuthProvider>
             <Toaster />
             <Router>
               <Routes>

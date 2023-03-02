@@ -26,6 +26,15 @@
   margin-right: 5px;
 }
 
+.img-select {
+  height: 30px;
+  margin-bottom: 15px;
+  outline-color: saddlebrown;
+  border-radius: 20px;
+  border-color: sandybrown;
+  width: 100%;
+}
+
 .textarea-label {
   margin-top: 10px;
 }

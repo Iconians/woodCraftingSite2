@@ -1,23 +1,20 @@
-import React, {
-  createContext,
-  useContext,
-  useState,
-  useEffect,
-  ReactNode,
-} from "react";
+import React, { createContext, useContext, useState, useEffect } from "react";
 import { fetchCarvings } from "../fetches/getCarvings";
 import { Carving } from "../interfaces";
 
 interface CarvingContextInterface {
   carvingArray: Carving[];
-  children?: ReactNode;
-  addPurchaseItems: (item: any) => void;
+  addPurchaseItems: (item: Carving) => void;
   cartItems: Carving[];
 }
 
+type CarvingProviderProps = {
+  children?: JSX.Element | JSX.Element[];
+};
+
 const CarvingContext = createContext({} as CarvingContextInterface);
 
-export const CarvingProvider = ({ children }: CarvingContextInterface) => {
+export const CarvingProvider = ({ children }: CarvingProviderProps) => {
   const [carvingArray, setCarvingArray] = useState<Carving[]>([]);
   const [cartItems, setCartItems] = useState<Carving[]>([]);
 
@@ -25,8 +22,16 @@ export const CarvingProvider = ({ children }: CarvingContextInterface) => {
     fetchCarvings().then((data) => setCarvingArray(data));
   }, []);
 
-  const addPurchaseItems = (item: any) => {
+  const addToLocalStorage = (item: Carving) => {
+    const cart = localStorage.getItem("cart");
+    if (!cart) {
+      localStorage.setItem("cart", JSON.stringify(item));
+    }
+  };
+
+  const addPurchaseItems = (item: Carving) => {
     setCartItems([...cartItems, item]);
+    addToLocalStorage(item);
   };
 
   return (

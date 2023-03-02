@@ -10,7 +10,8 @@ import "./AddCarvingPage.css";
 export const AddCarvingPage = () => {
   const [carvingName, setCarvingName] = useState("");
   const [image, setImage] = useState(carvingPictures.bear);
-  const [handCarved, setHandCarved] = useState<null | boolean>(null);
+  const [handCarved, setHandCarved] = useState(true);
+  const [machinedCarved, setMachinedCarved] = useState(false);
   const [availableToSell, setAvailableToSell] = useState(false);
   const [price, setPrice] = useState("");
   const [story, setStory] = useState("");
@@ -26,8 +27,11 @@ export const AddCarvingPage = () => {
       case "typeOfCarving":
         if (value === "handCarving") {
           setHandCarved(true);
-        } else {
+          setMachinedCarved(false);
+        }
+        if (value === "machinedCarving") {
           setHandCarved(false);
+          setMachinedCarved(true);
         }
         break;
       case "sellCarving":
@@ -56,11 +60,25 @@ export const AddCarvingPage = () => {
       toast.error("select your carving type");
       return false;
     }
+    if (availableToSell === true && !price.length) {
+      toast.error("add a price to your carving");
+      return false;
+    }
     if (!story.length) {
       toast.error("write a description for your carving");
       return false;
     }
     return true;
+  };
+
+  const resetForm = () => {
+    setCarvingName("");
+    setImage(carvingPictures.bear);
+    setHandCarved(true);
+    setMachinedCarved(false);
+    setAvailableToSell(false);
+    setPrice("");
+    setStory("");
   };
 
   const newCarving = () => {
@@ -77,7 +95,23 @@ export const AddCarvingPage = () => {
         carversName: getUserName(),
         qty: 1,
       };
-      addCarvings(carving);
+      addCarvings(carving).then((data) => {
+        if (data.ok === true) {
+          resetForm();
+        }
+      });
+    }
+  };
+
+  const setValue = (name: string) => {
+    if (name === "Hand Carved") {
+      return handCarved;
+    }
+    if (name === "Machined Carved") {
+      return machinedCarved;
+    }
+    if (name === "Do you want to sell this carving?") {
+      return availableToSell;
     }
   };
 
@@ -103,6 +137,7 @@ export const AddCarvingPage = () => {
                   type={input.type}
                   placeholder={input.placeHolder}
                   onChange={captureInput}
+                  value={carvingName}
                 />
               </>
             ) : (
@@ -111,8 +146,9 @@ export const AddCarvingPage = () => {
                   name={input.name}
                   type={input.type}
                   placeholder={input.placeHolder}
-                  value={input.value}
+                  checked={setValue(input.labelName)}
                   onChange={captureInput}
+                  value={input.value}
                 />
                 <label htmlFor={input.name}>{input.labelName}</label>
               </div>
@@ -126,16 +162,19 @@ export const AddCarvingPage = () => {
                 name="price"
                 placeholder="Price"
                 onChange={captureInput}
+                value={price}
               />
             </>
           ) : null}
           <label htmlFor="image">Image</label>
           <select
+            className="img-select"
             name="image"
             id=""
             onChange={(e) => {
               setImage(e.target.value);
             }}
+            value={image}
           >
             {Object.entries(carvingPictures).map(([label, pictureValue]) => {
               return <option value={pictureValue}>{label}</option>;
@@ -150,6 +189,7 @@ export const AddCarvingPage = () => {
             rows={10}
             className="textarea"
             onChange={(e) => setStory(e.target.value)}
+            value={story}
           ></textarea>
           <input type="submit" />
         </form>

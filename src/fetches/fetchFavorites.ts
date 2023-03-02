@@ -1,4 +1,4 @@
-import { Carving, Favorite } from "../interfaces";
+import { Favorite } from "../interfaces";
 const loggit = <T>(something: T) => {
   // leave for example of how to console.log in a promise
   console.log(something);

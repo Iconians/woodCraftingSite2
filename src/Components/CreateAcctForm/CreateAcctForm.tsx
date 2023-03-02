@@ -50,7 +50,7 @@ export const CreateAcctForm = ({ changeForm, redirectToHome }: props) => {
   };
 
   const handleEye = () => {
-    const input = document.getElementById("eye");
+    const input = document.getElementById("eye") as HTMLInputElement;
     if (input.type === "password") {
       input.type = "text";
     } else {

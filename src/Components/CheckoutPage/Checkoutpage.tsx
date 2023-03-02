@@ -46,7 +46,11 @@ export const CheckoutPage = () => {
       DISCOVER: /^6(?:011|5[0-9]{2})[0-9]{3,}$/,
     };
     for (const card in regexPattern) {
-      if (cardNumber.replace(/[^\d]/g, "").match(regexPattern[card]))
+      if (
+        cardNumber
+          .replace(/[^\d]/g, "")
+          .match(new RegExp(regexPattern[card as keyof typeof regexPattern]))
+      )
         return card;
     }
     return "";
@@ -75,10 +79,10 @@ export const CheckoutPage = () => {
       setCardLength(length);
       setCardType(card);
     }
-    validations[name](value);
+    validations[name as keyof typeof validations](value);
   };
 
-  const handleBlur = (e: any) => {
+  const handleBlur = (e: React.ChangeEvent<HTMLInputElement>) => {
     const name = e.target.name;
     const value = e.target.value;
     handleValidations(name, value);
@@ -140,14 +144,6 @@ export const CheckoutPage = () => {
       onChange: updateValue,
     },
   ];
-
-  // const getUserId = () => {
-  //   const user = localStorage.getItem("user");
-  //   if (user !== null) {
-  //     const userId = JSON.parse(user)["id"];
-  //     return userId;
-  //   }
-  // };
 
   const navigate = useNavigate();
 

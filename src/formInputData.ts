@@ -10,7 +10,6 @@ export const addCarvingForm = [
     labelName: "Hand Carved",
     name: "typeOfCarving",
     value: "handCarving",
-    checked: true,
   },
   {
     type: "radio",

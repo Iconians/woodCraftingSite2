@@ -172,9 +172,7 @@
   "purchases": [
     {
       "userId": 3,
-      "carvingId": [
-        2
-      ],
+      "carvingId": [2],
       "name": "fbbcvbsdsd",
       "address": "vbvbcvbsdsdsd",
       "city": "vbvbvsdsd",
@@ -188,9 +186,7 @@
     },
     {
       "userId": 3,
-      "carvingId": [
-        2
-      ],
+      "carvingId": [2],
       "name": "jnsjkn",
       "address": "sklmlkmksmd4251",
       "city": "smklksmmsk",

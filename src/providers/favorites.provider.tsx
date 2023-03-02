@@ -4,15 +4,18 @@ import { fetchCarvings } from "../fetches/getCarvings";
 import { Carving, Favorite } from "../interfaces";
 
 interface FavoriteContextInterface {
-  children?: ReactNode;
   fetchFavoriteCarvings: () => Promise<Carving[]>;
   getUserId: () => any;
   // this is what I get when I hover over the getUserId
 }
 
+type FavoritesProviderProps = {
+  children?: JSX.Element | JSX.Element[];
+};
+
 const FavoritesContext = createContext({} as FavoriteContextInterface);
 
-export const FavoriteProvider = ({ children }: FavoriteContextInterface) => {
+export const FavoriteProvider = ({ children }: FavoritesProviderProps) => {
   const getUserId = () => {
     const user = localStorage.getItem("user");
     if (user !== null) {
