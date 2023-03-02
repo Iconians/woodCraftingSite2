@@ -24,8 +24,13 @@ export const CarvingProvider = ({ children }: CarvingProviderProps) => {
 
   const addToLocalStorage = (item: Carving) => {
     const cart = localStorage.getItem("cart");
-    if (!cart) {
-      localStorage.setItem("cart", JSON.stringify(item));
+    if (cart === null) {
+      localStorage.setItem("cart", JSON.stringify([item]));
+    } else {
+      const parseCart = JSON.parse(cart);
+      parseCart.push(item);
+      console.log(parseCart);
+      localStorage.setItem("cart", JSON.stringify(parseCart));
     }
   };
 
@@ -33,6 +38,18 @@ export const CarvingProvider = ({ children }: CarvingProviderProps) => {
     setCartItems([...cartItems, item]);
     addToLocalStorage(item);
   };
+
+  const checkCart = () => {
+    const cart = localStorage.getItem("cart");
+    if (cart !== null) {
+      const parseCart = JSON.parse(cart);
+      setCartItems(parseCart);
+    }
+  };
+
+  useEffect(() => {
+    checkCart();
+  }, []);
 
   return (
     <CarvingContext.Provider

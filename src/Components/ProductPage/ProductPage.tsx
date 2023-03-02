@@ -14,17 +14,28 @@ import "./ProductPage.css";
 
 export const ProductPage = () => {
   const location = useLocation();
-  const { carvingArray, addPurchaseItems } = useCarvingContext();
+  const { carvingArray, addPurchaseItems, cartItems } = useCarvingContext();
   const [favoriteArray, setFavoriteArray] = useState<Favorite[]>([]);
-  const [carvingQty, setCarvingQty] = useState(1);
+  const [carvingQty, setCarvingQty] = useState(0);
   const { getUserId } = useFavoriteContext();
 
-  const inStock = (carving: Favorite[]) => {
-    const findId = carving.find((id) => id.carvingId);
-    const getQty = carvingArray.find(
-      (carvingPiece) => carvingPiece.id === findId?.carvingId
+  const checkIfInCart = () => {
+    const itemQty = cartItems.find(
+      (item) => item.id === location.state.productId
     );
-    if (getQty !== undefined && carvingQty !== 0) {
+    return itemQty;
+  };
+
+  const inStock = () => {
+    const findId = carvingArray.find(
+      (id) => id.id === location.state.productId
+    );
+    const cartQty = checkIfInCart();
+    const getQty = carvingArray.find(
+      (carvingPiece) => carvingPiece.id === findId?.qty
+    );
+    console.log(getQty, cartQty);
+    if (getQty !== undefined && cartQty === undefined) {
       setCarvingQty(getQty.qty);
     }
   };
@@ -38,7 +49,7 @@ export const ProductPage = () => {
     if (carving.length) {
       setFavoriteArray(carving);
     }
-    inStock(carving);
+    inStock();
   };
 
   const addFavorites = (id: number) => {
@@ -88,7 +99,7 @@ export const ProductPage = () => {
     fetchFavorites().then((data) => {
       findFavorites(data);
     });
-  }, [favoriteArray.length]);
+  }, [favoriteArray.length, cartItems.length]);
 
   return (
     <div className="product-page-wrapper" id="productPage">
@@ -127,7 +138,7 @@ export const ProductPage = () => {
                 {carving.price ? (
                   <button
                     id={`${carving.id}`}
-                    onClick={(e) => {
+                    onClick={() => {
                       addItemToCart(`${carving.id}`);
                     }}
                     disabled={carvingQty === 0}
