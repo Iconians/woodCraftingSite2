@@ -9,7 +9,8 @@
   display: none;
   padding-left: 10px;
   box-shadow: rgb(0 0 0 / 6%) 0px 2px 4px;
-  height: 100vh;
+  height: 100%;
+  overflow: hidden;
 } 
 
 .open {

@@ -15,7 +15,6 @@ import {
 } from "../../validations";
 import { NavBar } from "../NavBar/NavBar";
 import "./CheckoutPage.css";
-// restructure code, escpecially the tsx
 
 export const CheckoutPage = () => {
   const location = useLocation();
@@ -171,6 +170,7 @@ export const CheckoutPage = () => {
   useEffect(() => {
     findTotal();
   }, []);
+
   return (
     <div className="checkout-page-wrapper">
       <NavBar />

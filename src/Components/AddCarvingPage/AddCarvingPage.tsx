@@ -82,6 +82,7 @@ export const AddCarvingPage = () => {
   };
 
   const newCarving = () => {
+    // when form submits we do this stuff
     const areInputsValid = validations();
     if (areInputsValid === true) {
       const carving = {
