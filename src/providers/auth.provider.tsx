@@ -5,7 +5,7 @@ import { fetchUsers } from "../fetches/fetchUsers";
 import { newUser, Users } from "../interfaces";
 
 interface AuthContextInterface {
-  user: object | newUser;
+  user: object | newUser | Users;
   createUser: (user: newUser, redirectToHome: () => void) => void;
   signinUser: (
     email: string,

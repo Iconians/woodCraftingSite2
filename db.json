@@ -7,7 +7,7 @@
       "password": "password"
     },
     {
-      "name": "cl",
+      "name": "clayton",
       "email": "clay@gmail.com",
       "password": "password",
       "id": 2
@@ -147,6 +147,28 @@
       "id": 8
     }
   ],
+  "userCart": [
+    {
+      "userId": 4,
+      "productId": 5,
+      "id": 2
+    },
+    {
+      "userId": 2,
+      "productId": 4,
+      "id": 3
+    },
+    {
+      "userId": 2,
+      "productId": 5,
+      "id": 4
+    },
+    {
+      "userId": 2,
+      "productId": 2,
+      "id": 5
+    }
+  ],
   "favorites": [
     {
       "userId": 3,
@@ -197,6 +219,20 @@
       "expMonthDate": "Jan",
       "expYearDate": "2023",
       "id": 2
+    },
+    {
+      "userId": 4,
+      "carvingId": [4, 5, 2],
+      "name": "clay",
+      "address": "",
+      "city": "dsasad",
+      "state": "AR : Arkansas",
+      "zip": "51313",
+      "cardType": "",
+      "cardNumbers": "k",
+      "expMonthDate": "Jan",
+      "expYearDate": "2023",
+      "id": 4
     }
   ]
 }

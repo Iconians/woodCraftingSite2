@@ -16,7 +16,12 @@ export const ProductComponentHolder = ({ h3, array }: props) => {
       </div>
       <div className="product-holder-container">
         {array.map((carving) => (
-          <ProductHolder img={carving.image} id={carving.id} key={carving.id} />
+          <ProductHolder
+            name={carving.carvingName}
+            img={carving.image}
+            id={carving.id}
+            key={carving.id}
+          />
         ))}
       </div>
     </div>

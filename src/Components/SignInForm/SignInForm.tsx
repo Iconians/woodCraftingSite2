@@ -20,8 +20,6 @@ export const SignInForm = ({ changeForm, redirectToHome }: props) => {
       setEmail(value);
     }
     if (name === "password") {
-      console.log(value);
-
       setPassword(value);
     }
   };

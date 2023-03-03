@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { toast } from "react-hot-toast";
 import { useLocation, useNavigate } from "react-router-dom";
 import { AMERICANEXPRESS, OTHERCARDS } from "../../constants";
 import { addPurchase } from "../../fetches/addPurchase";
@@ -65,12 +66,41 @@ export const CheckoutPage = () => {
 
   const handleValidations = (name: string, value: string) => {
     const validations = {
-      name: (value: string) => onlyTextValidation(value),
+      name: (value: string) => {
+        const checkName = onlyTextValidation(value);
+        if (!checkName) {
+          toast.error("Alpabetical letters only");
+        }
+      },
       address: () => "",
-      city: (value: string) => onlyTextValidation(value),
-      zip: (value: string) => onlyNumberValidation(value),
-      cardnumber: (value: string) => cardNumberValidation(value),
-      securitycode: (value: string) => securityCodeValidation(3, value),
+      city: (value: string) => {
+        const checkAddress = onlyTextValidation(value);
+        if (!checkAddress) {
+          toast.error("Alpabetical letters only");
+        }
+      },
+      zip: (value: string) => {
+        const checkZip = onlyNumberValidation(value);
+        if (!checkZip) {
+          toast.error("Numbers Only");
+        }
+      },
+      cardnumber: (value: string) => {
+        const checkCardNumber = cardNumberValidation(value);
+        if (!checkCardNumber) {
+          toast.error("Enter a Valid Card");
+        }
+      },
+      securitycode: (value: string) => {
+        const checkSecurityCodeLenth = securityCodeValidation(3, value);
+        const checkSecurityCodeIsNumber = onlyNumberValidation(value);
+        if (!checkSecurityCodeLenth) {
+          toast.error("must be 3 digits");
+        }
+        if (!checkSecurityCodeIsNumber) {
+          toast.error("Numbers Only");
+        }
+      },
     };
     if (name === "cardnumber") {
       const card = findDebitCardType(value);
@@ -84,6 +114,7 @@ export const CheckoutPage = () => {
   const handleBlur = (e: React.ChangeEvent<HTMLInputElement>) => {
     const name = e.target.name;
     const value = e.target.value;
+    console.log(name, value);
     handleValidations(name, value);
   };
 
@@ -120,7 +151,6 @@ export const CheckoutPage = () => {
       case "securitycode":
         setSecurityCode(value);
     }
-    handleValidations(name, value);
   };
 
   const inputData = [

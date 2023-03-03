@@ -1,11 +1,16 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
+import { toast } from "react-hot-toast";
+import { addToUserCart } from "../fetches/addToUserCart";
+import { fetchUsersCart } from "../fetches/fetchUsersCart";
 import { fetchCarvings } from "../fetches/getCarvings";
-import { Carving } from "../interfaces";
+import { Carving, userCart } from "../interfaces";
 
 interface CarvingContextInterface {
   carvingArray: Carving[];
   addPurchaseItems: (item: Carving) => void;
   cartItems: Carving[];
+  openModal: boolean;
+  openCartModal: () => void;
 }
 
 type CarvingProviderProps = {
@@ -17,38 +22,62 @@ const CarvingContext = createContext({} as CarvingContextInterface);
 export const CarvingProvider = ({ children }: CarvingProviderProps) => {
   const [carvingArray, setCarvingArray] = useState<Carving[]>([]);
   const [cartItems, setCartItems] = useState<Carving[]>([]);
+  const [openModal, setOpenModal] = useState<boolean>(false);
 
-  useEffect(() => {
-    fetchCarvings().then((data) => setCarvingArray(data));
-  }, []);
-
-  const addToLocalStorage = (item: Carving) => {
-    const cart = localStorage.getItem("cart");
-    if (cart === null) {
-      localStorage.setItem("cart", JSON.stringify([item]));
+  const openCartModal = () => {
+    if (openModal === false) {
+      setOpenModal(true);
     } else {
-      const parseCart = JSON.parse(cart);
-      parseCart.push(item);
-      console.log(parseCart);
-      localStorage.setItem("cart", JSON.stringify(parseCart));
+      setOpenModal(false);
+    }
+  };
+
+  const getUserId = () => {
+    const user = localStorage.getItem("user");
+    if (user !== null) {
+      const userId = JSON.parse(user)["id"];
+      return userId;
     }
   };
 
   const addPurchaseItems = (item: Carving) => {
+    const userId = getUserId();
+    if (userId === undefined) {
+      toast.error("Please log In to add carving to cart");
+      return;
+    }
+    addToUserCart(item, userId);
     setCartItems([...cartItems, item]);
-    addToLocalStorage(item);
   };
 
-  const checkCart = () => {
-    const cart = localStorage.getItem("cart");
-    if (cart !== null) {
-      const parseCart = JSON.parse(cart);
-      setCartItems(parseCart);
-    }
+  const findCart = (usersCart: userCart[], carvings: Carving[]) => {
+    const user = getUserId();
+    let arr: Carving[] = [];
+    usersCart
+      .filter((favorite) => favorite.userId === user)
+      .map((favorite) => {
+        let findCarving = carvings.find(
+          (carving) => carving.id === favorite.productId
+        );
+        if (findCarving !== undefined) arr.push(findCarving);
+      });
+    return arr;
+  };
+
+  const fetchCart = async () => {
+    const carvings = await fetchCarvings();
+    const userCart = await fetchUsersCart();
+    return findCart(userCart, carvings);
+  };
+
+  const checkCart = async () => {
+    const cart = await fetchCart();
+    setCartItems(cart);
   };
 
   useEffect(() => {
     checkCart();
+    fetchCarvings().then((data) => setCarvingArray(data));
   }, []);
 
   return (
@@ -57,6 +86,8 @@ export const CarvingProvider = ({ children }: CarvingProviderProps) => {
         carvingArray,
         addPurchaseItems,
         cartItems,
+        openModal,
+        openCartModal,
       }}
     >
       {children}
@@ -70,5 +101,7 @@ export const useCarvingContext = () => {
     carvingArray: context.carvingArray,
     addPurchaseItems: context.addPurchaseItems,
     cartItems: context.cartItems,
+    openModal: context.openModal,
+    openCartModal: context.openCartModal,
   };
 };

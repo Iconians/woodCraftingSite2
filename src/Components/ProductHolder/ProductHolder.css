@@ -1,10 +1,12 @@
 .product-holder-wrapper {
   width: 300px;
-  background-color: saddlebrown;
+  background-color: lightgoldenrodyellow;
   border-radius: 20px;
   box-shadow: rgb(0 0 0 / 6%) 0px 2px 4px;
   transition: all .3s ease-in-out;
   cursor: pointer;
+  padding-bottom: 20px;
+  color: black;
 }
 
 .product-holder-wrapper:hover {
@@ -12,16 +14,18 @@
   transform: translate3d(0px, -1px, 0px);
 }
 
-.product-holder-wrapper > img {
+.img-div > img {
   width: 300px;
   height: 300px;
-  border-radius: 10px;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
 }
 
-.link-wrapper {
-  margin: auto;
-  display: flex;
-  justify-content: center;
-  color: white;
-  text-decoration: none;
+.name-div {
+  margin-left: 20px;
+}
+
+.desc-div > p{
+  text-align: center;
+  
 }

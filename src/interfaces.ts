@@ -29,3 +29,9 @@ export interface newUser {
   email: string;
   password: string;
 }
+
+export interface userCart {
+  userId: number;
+  productId: number;
+  id: number;
+}

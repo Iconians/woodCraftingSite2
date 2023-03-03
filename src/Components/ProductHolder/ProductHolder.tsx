@@ -4,9 +4,10 @@ import "./ProductHolder.css";
 interface props {
   img: string;
   id: number;
+  name: string;
 }
 
-export const ProductHolder = ({ img, id }: props) => {
+export const ProductHolder = ({ name, img, id }: props) => {
   const navigate = useNavigate();
   const navigateToProductPage = () => {
     navigate("/ProductPage", { state: { productId: id } });
@@ -17,7 +18,18 @@ export const ProductHolder = ({ img, id }: props) => {
       key={id}
       onClick={navigateToProductPage}
     >
-      <img src={img} alt="" />
+      <div className="img-div">
+        <img src={img} alt="" />
+      </div>
+      <div className="name-div">
+        <h3>{name}</h3>
+      </div>
+      <div className="desc-div">
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua
+        </p>
+      </div>
     </div>
   );
 };

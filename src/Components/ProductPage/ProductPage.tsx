@@ -34,7 +34,6 @@ export const ProductPage = () => {
     const getQty = carvingArray.find(
       (carvingPiece) => carvingPiece.id === findId?.qty
     );
-    console.log(getQty, cartQty);
     if (getQty !== undefined && cartQty === undefined) {
       setCarvingQty(getQty.qty);
     }

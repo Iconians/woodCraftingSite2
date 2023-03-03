@@ -3,7 +3,7 @@
 }
 
 .acct-btn-wrapper {
-  width: 300px;
+  width: 350px;
   display: flex;
   justify-content: space-between;
 }
@@ -11,6 +11,13 @@
 .acct-btn-wrapper > a {
   cursor: pointer;
   font-size: 17px;
+  transition: all .3s ease-in-out;
+}
+
+.acct-btn-wrapper > a:hover {
+    font-size: 18px;
+    color: wheat;
+
 }
 
 .acct-favorite-btn {
@@ -20,5 +27,9 @@
 
 .acct-btn-wrapper .cart-icon-div {
   cursor: pointer;
+}
+
+.cart-icon-div:hover {
+  color: wheat;
 }
 

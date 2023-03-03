@@ -30,9 +30,10 @@ export const passwordValidation = (value: string) => {
 export const onlyTextValidation = (value: string) => {
   if (value) {
     if (/^[a-zA-Z ]*$/i.test(value)) {
-      return "";
+      // return "";
+      return true;
     } else {
-      toast.error("Alpabetical letters only");
+      return false;
     }
   } else {
     return undefined;
@@ -42,9 +43,9 @@ export const onlyTextValidation = (value: string) => {
 export const onlyNumberValidation = (value: string) => {
   if (value) {
     if (/^[0-9]*$/.test(value)) {
-      return "";
+      return true;
     } else {
-      toast.error("Numbers Only");
+      false;
     }
   } else {
     return undefined;
@@ -69,19 +70,17 @@ export const cardNumberValidation = (cardNumber: string) => {
     if (cardNumber && card === "AMERICAN_EXPRESS") {
       return cardNumber &&
         /^[1-6]{1}[0-9]{13,14}$/i.test(cardNumber.replace(/[^\d]/g, "").trim())
-        ? ""
-        : toast.error("Enter a Valid Card");
+        ? true
+        : false;
     } else {
       return cardNumber &&
         /^[1-6]{1}[0-9]{15,16}$/i.test(cardNumber.replace(/[^\d]/g, "").trim())
-        ? ""
-        : toast.error("Enter a Valid Card");
+        ? true
+        : false;
     }
   }
-  return toast.error("Enter a Valid Card");
+  return false;
 };
 
 export const securityCodeValidation = (min: number, value: string) =>
-  value.length < 3
-    ? toast.error("must be 3 digits")
-    : toast.success("input correct");
+  value.length < 3 ? false : true;
