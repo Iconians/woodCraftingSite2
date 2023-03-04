@@ -28,7 +28,7 @@ export const createAcctForm = [
   {
     labelName: "name",
     labeltext: "Name",
-    inputName: "formName",
+    inputName: "name",
     type: "text",
     placeHolder: "Name",
   },

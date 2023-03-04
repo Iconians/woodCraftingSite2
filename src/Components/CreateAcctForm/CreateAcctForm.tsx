@@ -4,6 +4,11 @@ import { useState } from "react";
 import { useAuthContext } from "../../providers/auth.provider";
 import { toast } from "react-hot-toast";
 import { createAcctForm } from "../../formInputData";
+import {
+  emailValidation,
+  onlyTextValidation,
+  passwordValidation,
+} from "../../validations";
 
 interface props {
   changeForm: () => void;
@@ -16,6 +21,7 @@ export const CreateAcctForm = ({ changeForm, redirectToHome }: props) => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [confirmPassword, setConfirmPassword] = useState<string>("");
+  const [inputError, setInputError] = useState(true);
 
   const captureInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     const name = e.target.name;
@@ -34,6 +40,39 @@ export const CreateAcctForm = ({ changeForm, redirectToHome }: props) => {
         setConfirmPassword(value);
         break;
     }
+  };
+
+  const isInputValid = (name: string, value: string) => {
+    const validations = {
+      name: (value: string) => {
+        const checkName = onlyTextValidation(value);
+        if (!checkName) {
+          toast.error("Alpabetical letters only");
+          setInputError(true);
+        } else {
+          setInputError(false);
+        }
+      },
+      email: (value: string) => {
+        const checkEmail = emailValidation(value);
+        if (!checkEmail) {
+          toast.error("provide a correct email");
+          setInputError(true);
+        } else {
+          setInputError(false);
+        }
+      },
+      password: (value: string) => {
+        const checkPassword = passwordValidation(value);
+        if (!checkPassword) {
+          toast.error("Invalid Password");
+          setInputError(true);
+        } else {
+          setInputError(false);
+        }
+      },
+    };
+    validations[name as keyof typeof validations](value);
   };
 
   const newUser = () => {
@@ -83,6 +122,7 @@ export const CreateAcctForm = ({ changeForm, redirectToHome }: props) => {
                     type={input.type}
                     placeholder={input.placeHolder}
                     onChange={captureInput}
+                    onBlur={(e) => isInputValid(e.target.name, e.target.value)}
                   />
                   {input.inputName === "password" ? (
                     <FontAwesomeIcon

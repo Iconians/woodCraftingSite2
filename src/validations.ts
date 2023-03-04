@@ -3,12 +3,12 @@ import { toast } from "react-hot-toast";
 export const emailValidation = (value: string) => {
   if (value) {
     if (/[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+/.test(value)) {
-      return "";
+      return true;
     } else {
-      toast.error("Enter Valid email");
+      return false;
     }
   } else {
-    toast.error("Enter Valid email");
+    return false;
   }
 };
 
@@ -20,9 +20,9 @@ export const passwordValidation = (value: string) => {
       ) &&
       value.length <= 20
     ) {
-      return "";
+      return true;
     } else {
-      toast.error("Invalid password");
+      return false;
     }
   }
 };
