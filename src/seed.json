@@ -1,52 +1,10 @@
 {
   "users": [
     {
-      "id": 1,
-      "username": "username",
-      "email": "name",
-      "password": "password"
-    },
-    {
-      "name": "clayton",
-      "email": "clay@gmail.com",
-      "password": "password",
+      "name": "Jon",
+      "email": "Jon@email.com",
+      "password": "pasSw@rd71",
       "id": 2
-    },
-    {
-      "name": "hi",
-      "email": "cay@mail.com",
-      "password": "password",
-      "id": 3
-    },
-    {
-      "name": "hi",
-      "email": "email@email.com",
-      "password": "password",
-      "id": 4
-    },
-    {
-      "name": "hi",
-      "email": "email@email.com",
-      "password": "password",
-      "id": 5
-    },
-    {
-      "name": "hi",
-      "email": "email@email.com",
-      "password": "password",
-      "id": 6
-    },
-    {
-      "name": "hi",
-      "email": "email@email.com",
-      "password": "password",
-      "id": 7
-    },
-    {
-      "name": "hi",
-      "email": "gmail@email.com",
-      "password": "password",
-      "id": 8
     }
   ],
   "carvings": [
@@ -147,59 +105,7 @@
       "id": 8
     }
   ],
-  "userCart": [
-    {
-      "userId": 2,
-      "productId": 4,
-      "id": 3
-    },
-    {
-      "userId": 2,
-      "productId": 5,
-      "id": 4
-    },
-    {
-      "userId": 2,
-      "productId": 2,
-      "id": 5
-    }
-  ],
-  "favorites": [
-    {
-      "userId": 3,
-      "carvingId": 2,
-      "id": 1
-    },
-    {
-      "userId": 4,
-      "carvingId": 2,
-      "id": 3
-    },
-    {
-      "userId": 4,
-      "carvingId": 1,
-      "id": 4
-    },
-    {
-      "userId": 4,
-      "carvingId": 6,
-      "id": 5
-    }
-  ],
-  "purchases": [
-    {
-      "userId": 3,
-      "carvingId": [2],
-      "name": "fbbcvbsdsd",
-      "address": "vbvbcvbsdsdsd",
-      "city": "vbvbvsdsd",
-      "state": "AL : Alabama",
-      "zip": "51351",
-      "cardType": "MASTERCARD",
-      "cardNumbers": "5131 3135 1351 5353",
-      "expMonthDate": "Jan",
-      "expYearDate": "2023",
-      "id": 1
-    }
-  ]
+  "userCart": [],
+  "favorites": [],
+  "purchases": []
 }
