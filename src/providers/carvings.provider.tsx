@@ -1,6 +1,7 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
 import { toast } from "react-hot-toast";
 import { addToUserCart } from "../fetches/addToUserCart";
+import { deleteCartFetch } from "../fetches/deleteCartFetch";
 import { fetchUsersCart } from "../fetches/fetchUsersCart";
 import { fetchCarvings } from "../fetches/getCarvings";
 import { Carving, userCart } from "../interfaces";
@@ -11,6 +12,7 @@ interface CarvingContextInterface {
   cartItems: Carving[];
   openModal: boolean;
   openCartModal: () => void;
+  deleteItemsFromCartAfterPurchase: () => void;
 }
 
 type CarvingProviderProps = {
@@ -75,6 +77,16 @@ export const CarvingProvider = ({ children }: CarvingProviderProps) => {
     setCartItems(cart);
   };
 
+  const deleteItemsFromCartAfterPurchase = async () => {
+    const getCartItems = await fetchUsersCart();
+    const getId = getUserId();
+    const filterCart = getCartItems.filter((item) => item.userId === getId);
+    for (let item of filterCart) {
+      deleteCartFetch(item.id);
+    }
+    setCartItems([]);
+  };
+
   useEffect(() => {
     checkCart();
     fetchCarvings().then((data) => setCarvingArray(data));
@@ -88,6 +100,7 @@ export const CarvingProvider = ({ children }: CarvingProviderProps) => {
         cartItems,
         openModal,
         openCartModal,
+        deleteItemsFromCartAfterPurchase,
       }}
     >
       {children}
@@ -103,5 +116,6 @@ export const useCarvingContext = () => {
     cartItems: context.cartItems,
     openModal: context.openModal,
     openCartModal: context.openCartModal,
+    deleteItemsFromCartAfterPurchase: context.deleteItemsFromCartAfterPurchase,
   };
 };

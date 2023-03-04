@@ -31,7 +31,8 @@ export const CheckoutPage = () => {
   const [securityCode, setSecurityCode] = useState("");
   const [cardLength, setCardLength] = useState(19);
   const [cardType, setCardType] = useState("");
-  const { cartItems } = useCarvingContext();
+  const [inputError, setInputError] = useState(true);
+  const { cartItems, deleteItemsFromCartAfterPurchase } = useCarvingContext();
   const { getUserId } = useFavoriteContext();
 
   const findTotal = () => {
@@ -70,6 +71,9 @@ export const CheckoutPage = () => {
         const checkName = onlyTextValidation(value);
         if (!checkName) {
           toast.error("Alpabetical letters only");
+          setInputError(true);
+        } else {
+          setInputError(false);
         }
       },
       address: () => "",
@@ -77,18 +81,27 @@ export const CheckoutPage = () => {
         const checkAddress = onlyTextValidation(value);
         if (!checkAddress) {
           toast.error("Alpabetical letters only");
+          setInputError(true);
+        } else {
+          setInputError(false);
         }
       },
       zip: (value: string) => {
         const checkZip = onlyNumberValidation(value);
         if (!checkZip) {
           toast.error("Numbers Only");
+          setInputError(true);
+        } else {
+          setInputError(false);
         }
       },
       cardnumber: (value: string) => {
         const checkCardNumber = cardNumberValidation(value);
         if (!checkCardNumber) {
           toast.error("Enter a Valid Card");
+          setInputError(true);
+        } else {
+          setInputError(false);
         }
       },
       securitycode: (value: string) => {
@@ -96,9 +109,14 @@ export const CheckoutPage = () => {
         const checkSecurityCodeIsNumber = onlyNumberValidation(value);
         if (!checkSecurityCodeLenth) {
           toast.error("must be 3 digits");
+          setInputError(true);
         }
         if (!checkSecurityCodeIsNumber) {
           toast.error("Numbers Only");
+          setInputError(true);
+        }
+        if (checkSecurityCodeLenth && checkSecurityCodeIsNumber) {
+          setInputError(false);
         }
       },
     };
@@ -190,11 +208,16 @@ export const CheckoutPage = () => {
       expMonthDate: expireMonth,
       expYearDate: expireYear,
     };
-    addPurchase(formData).then((res) => {
-      if (res.ok) {
-        navigate("/ConfirmationPage");
-      }
-    });
+    if (!inputError) {
+      addPurchase(formData).then((res) => {
+        if (res.ok) {
+          navigate("/ConfirmationPage");
+          deleteItemsFromCartAfterPurchase();
+        }
+      });
+    } else {
+      toast.error("fix the errors to submit your purchase");
+    }
   };
 
   useEffect(() => {

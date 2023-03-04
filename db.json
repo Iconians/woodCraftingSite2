@@ -149,11 +149,6 @@
   ],
   "userCart": [
     {
-      "userId": 4,
-      "productId": 5,
-      "id": 2
-    },
-    {
       "userId": 2,
       "productId": 4,
       "id": 3
@@ -194,7 +189,9 @@
   "purchases": [
     {
       "userId": 3,
-      "carvingId": [2],
+      "carvingId": [
+        2
+      ],
       "name": "fbbcvbsdsd",
       "address": "vbvbcvbsdsdsd",
       "city": "vbvbvsdsd",
@@ -208,7 +205,9 @@
     },
     {
       "userId": 3,
-      "carvingId": [2],
+      "carvingId": [
+        2
+      ],
       "name": "jnsjkn",
       "address": "sklmlkmksmd4251",
       "city": "smklksmmsk",
@@ -222,17 +221,35 @@
     },
     {
       "userId": 4,
-      "carvingId": [4, 5, 2],
-      "name": "clay",
-      "address": "",
-      "city": "dsasad",
-      "state": "AR : Arkansas",
-      "zip": "51313",
-      "cardType": "",
-      "cardNumbers": "k",
+      "carvingId": [
+        5
+      ],
+      "name": "dddf",
+      "address": "dfdfdf",
+      "city": "dffdsffdd",
+      "state": "AL : Alabama",
+      "zip": "53513",
+      "cardType": "VISA",
+      "cardNumbers": "4153 1351 5313 5135",
       "expMonthDate": "Jan",
       "expYearDate": "2023",
-      "id": 4
+      "id": 5
+    },
+    {
+      "userId": 4,
+      "carvingId": [
+        5
+      ],
+      "name": "fgfg",
+      "address": "fgfgfgfg",
+      "city": "fgfgf",
+      "state": "AL : Alabama",
+      "zip": "51351",
+      "cardType": "VISA",
+      "cardNumbers": "4151 5313 5153 1351",
+      "expMonthDate": "Jan",
+      "expYearDate": "2023",
+      "id": 6
     }
   ]
 }
