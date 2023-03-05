@@ -27,7 +27,7 @@ export const CreateAcctForm = ({ changeForm, redirectToHome }: props) => {
     const name = e.target.name;
     const value = e.target.value;
     switch (name) {
-      case "formName":
+      case "name":
         setName(value);
         break;
       case "email":
@@ -63,6 +63,15 @@ export const CreateAcctForm = ({ changeForm, redirectToHome }: props) => {
         }
       },
       password: (value: string) => {
+        const checkPassword = passwordValidation(value);
+        if (!checkPassword) {
+          toast.error("Invalid Password");
+          setInputError(true);
+        } else {
+          setInputError(false);
+        }
+      },
+      confirmpassword: (value: string) => {
         const checkPassword = passwordValidation(value);
         if (!checkPassword) {
           toast.error("Invalid Password");

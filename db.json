@@ -12,7 +12,12 @@
       "password": "password",
       "id": 2
     },
-    { "name": "hi", "email": "cay@mail.com", "password": "password", "id": 3 },
+    {
+      "name": "hi",
+      "email": "cay@mail.com",
+      "password": "password",
+      "id": 3
+    },
     {
       "name": "hi",
       "email": "email@email.com",
@@ -36,12 +41,6 @@
       "email": "email@email.com",
       "password": "password",
       "id": 7
-    },
-    {
-      "name": "hi",
-      "email": "gmail@email.com",
-      "password": "password",
-      "id": 8
     }
   ],
   "carvings": [
@@ -143,15 +142,43 @@
     }
   ],
   "userCart": [
-    { "userId": 2, "productId": 4, "id": 3 },
-    { "userId": 2, "productId": 5, "id": 4 },
-    { "userId": 2, "productId": 2, "id": 5 }
+    {
+      "userId": 2,
+      "productId": 4,
+      "id": 3
+    },
+    {
+      "userId": 2,
+      "productId": 5,
+      "id": 4
+    },
+    {
+      "userId": 2,
+      "productId": 2,
+      "id": 5
+    }
   ],
   "favorites": [
-    { "userId": 3, "carvingId": 2, "id": 1 },
-    { "userId": 4, "carvingId": 2, "id": 3 },
-    { "userId": 4, "carvingId": 1, "id": 4 },
-    { "userId": 4, "carvingId": 6, "id": 5 }
+    {
+      "userId": 3,
+      "carvingId": 2,
+      "id": 1
+    },
+    {
+      "userId": 4,
+      "carvingId": 2,
+      "id": 3
+    },
+    {
+      "userId": 4,
+      "carvingId": 1,
+      "id": 4
+    },
+    {
+      "userId": 4,
+      "carvingId": 6,
+      "id": 5
+    }
   ],
   "purchases": [
     {

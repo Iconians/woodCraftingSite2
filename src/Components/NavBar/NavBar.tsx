@@ -16,7 +16,7 @@ export const NavBar = () => {
         <div className="navbar-wrapper">
           <div className="brand-div">WoodCrafting Hobby Site</div>
           <div className="btns">
-            {Object.keys(user).length ? (
+            {user !== null ? (
               <NavAcctBtn openCartModal={openCartModal} />
             ) : (
               <NavButtons openCartModal={openCartModal} />

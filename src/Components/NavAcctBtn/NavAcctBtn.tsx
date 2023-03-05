@@ -17,7 +17,7 @@ export const NavAcctBtn = ({ openCartModal }: props) => {
   return (
     <div className="buttons-wrapper">
       <div className="acct-btn-wrapper">
-        <div>Hi {user.name}</div>
+        <div>Hi {user?.name}</div>
         <Link className="acct-favorite-btn" to={"/FavoritePage"}>
           Favorites
         </Link>

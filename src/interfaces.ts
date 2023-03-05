@@ -19,7 +19,7 @@ export interface Favorite {
 
 export interface Users {
   id: number;
-  username: string;
+  name: string;
   email: string;
   password: string;
 }
