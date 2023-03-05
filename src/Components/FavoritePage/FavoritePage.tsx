@@ -25,6 +25,7 @@ export const FavoritePage = () => {
         {favorites.length ? (
           favorites.map((carving) => (
             <ProductHolder
+              name={carving.carvingName}
               img={carving.image}
               id={carving.id}
               key={carving.id}

@@ -178,12 +178,19 @@
       "userId": 4,
       "carvingId": 6,
       "id": 5
+    },
+    {
+      "userId": 9,
+      "carvingId": 4,
+      "id": 6
     }
   ],
   "purchases": [
     {
       "userId": 3,
-      "carvingId": [2],
+      "carvingId": [
+        2
+      ],
       "name": "fbbcvbsdsd",
       "address": "vbvbcvbsdsdsd",
       "city": "vbvbvsdsd",
