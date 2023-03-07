@@ -16,7 +16,7 @@ export const NavBar = () => {
         <div className="navbar-wrapper">
           <div className="brand-div">WoodCrafting Hobby Site</div>
           <div className="btns">
-            {user !== null ? (
+            {user !== undefined ? (
               <NavAcctBtn openCartModal={openCartModal} />
             ) : (
               <NavButtons openCartModal={openCartModal} />

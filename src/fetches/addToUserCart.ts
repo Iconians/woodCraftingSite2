@@ -1,7 +1,6 @@
 import { Carving } from "../interfaces";
 
 export const addToUserCart = (item: Carving, userId: number) => {
-  console.log(userId);
   return fetch("http://localhost:3000/userCart", {
     method: "POST",
     headers: {

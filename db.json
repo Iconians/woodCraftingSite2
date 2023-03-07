@@ -1,46 +1,10 @@
 {
   "users": [
     {
-      "id": 1,
-      "username": "username",
-      "email": "name",
-      "password": "password"
-    },
-    {
-      "name": "clayton",
-      "email": "clay@gmail.com",
-      "password": "password",
-      "id": 2
-    },
-    {
-      "name": "hi",
-      "email": "cay@mail.com",
-      "password": "password",
-      "id": 3
-    },
-    {
-      "name": "hi",
+      "name": "userName",
       "email": "email@email.com",
       "password": "password",
-      "id": 4
-    },
-    {
-      "name": "hi",
-      "email": "email@email.com",
-      "password": "password",
-      "id": 5
-    },
-    {
-      "name": "hi",
-      "email": "email@email.com",
-      "password": "password",
-      "id": 6
-    },
-    {
-      "name": "hi",
-      "email": "email@email.com",
-      "password": "password",
-      "id": 7
+      "id": 1
     }
   ],
   "carvings": [
@@ -48,8 +12,8 @@
       "id": 1,
       "image": "src/assets/bear.jpg",
       "carvingName": "Bear",
-      "userId": 3,
-      "carverName": "users name",
+      "userId": 1,
+      "carverName": "userName",
       "availableToPurchase": false,
       "story": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
       "type": "machinedCarved",
@@ -60,8 +24,8 @@
       "id": 2,
       "image": "src/assets/chair.jpg",
       "carvingName": "Chair with dog",
-      "userId": 3,
-      "carverName": "users name",
+      "userId": 1,
+      "carverName": "userName",
       "availableToPurchase": true,
       "story": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
       "type": "machineCarved",
@@ -75,8 +39,8 @@
       "type": "machinedCarved",
       "availableToPurchase": false,
       "price": null,
-      "userId": 4,
-      "carversName": "hi",
+      "userId": 1,
+      "carversName": "userName",
       "qty": 1,
       "id": 3
     },
@@ -87,8 +51,8 @@
       "type": "handCarved",
       "availableToPurchase": true,
       "price": 300,
-      "userId": 4,
-      "carversName": "hi",
+      "userId": 1,
+      "carversName": "userName",
       "qty": 1,
       "id": 4
     },
@@ -99,8 +63,8 @@
       "type": "handCarved",
       "availableToPurchase": true,
       "price": 200,
-      "userId": 4,
-      "carversName": "hi",
+      "userId": 1,
+      "carversName": "userName",
       "qty": 1,
       "id": 5
     },
@@ -111,8 +75,8 @@
       "type": "handCarved",
       "availableToPurchase": false,
       "price": null,
-      "userId": 4,
-      "carversName": "hi",
+      "userId": 1,
+      "carversName": "userName",
       "qty": 1,
       "id": 6
     },
@@ -123,8 +87,8 @@
       "type": "handCarved",
       "availableToPurchase": false,
       "price": null,
-      "userId": 4,
-      "carversName": "hi",
+      "userId": 1,
+      "carversName": "userName",
       "qty": 1,
       "id": 7
     },
@@ -135,72 +99,13 @@
       "type": "machinedCarved",
       "availableToPurchase": false,
       "price": null,
-      "userId": 4,
-      "carversName": "hi",
+      "userId": 1,
+      "carversName": "userName",
       "qty": 1,
       "id": 8
     }
   ],
-  "userCart": [
-    {
-      "userId": 2,
-      "productId": 4,
-      "id": 3
-    },
-    {
-      "userId": 2,
-      "productId": 5,
-      "id": 4
-    },
-    {
-      "userId": 2,
-      "productId": 2,
-      "id": 5
-    }
-  ],
-  "favorites": [
-    {
-      "userId": 3,
-      "carvingId": 2,
-      "id": 1
-    },
-    {
-      "userId": 4,
-      "carvingId": 2,
-      "id": 3
-    },
-    {
-      "userId": 4,
-      "carvingId": 1,
-      "id": 4
-    },
-    {
-      "userId": 4,
-      "carvingId": 6,
-      "id": 5
-    },
-    {
-      "userId": 9,
-      "carvingId": 4,
-      "id": 6
-    }
-  ],
-  "purchases": [
-    {
-      "userId": 3,
-      "carvingId": [
-        2
-      ],
-      "name": "fbbcvbsdsd",
-      "address": "vbvbcvbsdsdsd",
-      "city": "vbvbvsdsd",
-      "state": "AL : Alabama",
-      "zip": "51351",
-      "cardType": "MASTERCARD",
-      "cardNumbers": "5131 3135 1351 5353",
-      "expMonthDate": "Jan",
-      "expYearDate": "2023",
-      "id": 1
-    }
-  ]
+  "userCart": [],
+  "favorites": [],
+  "purchases": []
 }

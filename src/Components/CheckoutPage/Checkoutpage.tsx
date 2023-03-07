@@ -132,7 +132,6 @@ export const CheckoutPage = () => {
   const handleBlur = (e: React.ChangeEvent<HTMLInputElement>) => {
     const name = e.target.name;
     const value = e.target.value;
-    console.log(name, value);
     handleValidations(name, value);
   };
 
@@ -208,6 +207,7 @@ export const CheckoutPage = () => {
       expMonthDate: expireMonth,
       expYearDate: expireYear,
     };
+
     if (!inputError) {
       addPurchase(formData).then((res) => {
         if (res.ok) {
