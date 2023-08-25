@@ -1,10 +1,9 @@
-import { useState } from "react";
 import { useAuthContext } from "../../providers/auth.provider";
 import { useCarvingContext } from "../../providers/carvings.provider";
 import { CartModal } from "../CartModal/CartModal";
 import { NavAcctBtn } from "../NavAcctBtn/NavAcctBtn";
 import { NavButtons } from "../NavButtons/NavButtons";
-import "./Navbar.css";
+// import "./Navbar.css";
 
 export const NavBar = () => {
   const { user } = useAuthContext();
