@@ -36,7 +36,7 @@ export const HomePage = () => {
 
       <div className="disclaimer">
         Don't use your real passwords as this site is unsecure and ones can
-        easliy find them
+        easily find them
       </div>
     </div>
   );
