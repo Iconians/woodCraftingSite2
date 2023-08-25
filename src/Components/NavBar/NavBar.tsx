@@ -3,7 +3,7 @@ import { useCarvingContext } from "../../providers/carvings.provider";
 import { CartModal } from "../CartModal/CartModal";
 import { NavAcctBtn } from "../NavAcctBtn/NavAcctBtn";
 import { NavButtons } from "../NavButtons/NavButtons";
-import "./Navbar.css";
+import "./NavBar.css";
 
 export const NavBar = () => {
   const { user } = useAuthContext();
