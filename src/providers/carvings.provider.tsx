@@ -5,6 +5,7 @@ import { deleteCartFetch } from "../fetches/deleteCartFetch";
 import { fetchUsersCart } from "../fetches/fetchUsersCart";
 import { fetchCarvings } from "../fetches/getCarvings";
 import { Carving, userCart } from "../interfaces";
+import { get } from "http";
 
 interface CarvingContextInterface {
   carvingArray: Carving[];
@@ -66,16 +67,16 @@ export const CarvingProvider = ({ children }: CarvingProviderProps) => {
     return arr;
   };
 
-  const fetchCart = async () => {
-    const carvings = await fetchCarvings();
-    const userCart = await fetchUsersCart();
-    return findCart(userCart, carvings);
-  };
+  // const fetchCart = async () => {
+  //   const carvings = await fetchCarvings();
+  //   const userCart = await fetchUsersCart();
+  //   return findCart(userCart, carvings);
+  // };
 
-  const checkCart = async () => {
-    const cart = await fetchCart();
-    setCartItems(cart);
-  };
+  // const checkCart = async () => {
+  //   const cart = await fetchCart();
+  //   setCartItems(cart);
+  // };
 
   const deleteItemsFromCartAfterPurchase = async () => {
     const getCartItems = await fetchUsersCart();
@@ -87,10 +88,23 @@ export const CarvingProvider = ({ children }: CarvingProviderProps) => {
     setCartItems([]);
   };
 
+  const fetchCartTest = async () => {
+    try {
+      fetchCarvings().then((data) => {
+        console.log(data);
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   useEffect(() => {
-    checkCart();
-    fetchCarvings().then((data) => setCarvingArray(data));
+    fetchCartTest();
+    console.log(carvingArray);
+    // checkCart();
+    // fetchCarvings().then((data) => setCarvingArray(data));
   }, []);
+  console.log(carvingArray);
 
   return (
     <CarvingContext.Provider
