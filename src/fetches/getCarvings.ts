@@ -3,14 +3,13 @@ import { Carving } from "../interfaces";
 import { supabase } from "../supabaseConfig";
 
 export const fetchCarvings = async () => {
-  const { data, error } = await supabase.from("test_carvings").select("*");
+  const { data, error } = await supabase.from("carvings").select("*");
 
   if (error) {
     console.log(error);
     toast.error(error.message);
     throw error;
   }
-  console.log(data);
   return data;
 };
 

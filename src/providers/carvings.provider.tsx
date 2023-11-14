@@ -67,16 +67,16 @@ export const CarvingProvider = ({ children }: CarvingProviderProps) => {
     return arr;
   };
 
-  // const fetchCart = async () => {
-  //   const carvings = await fetchCarvings();
-  //   const userCart = await fetchUsersCart();
-  //   return findCart(userCart, carvings);
-  // };
+  const fetchCart = async () => {
+    const carvings = await fetchCarvings();
+    const userCart = await fetchUsersCart();
+    return findCart(userCart, carvings);
+  };
 
-  // const checkCart = async () => {
-  //   const cart = await fetchCart();
-  //   setCartItems(cart);
-  // };
+  const checkCart = async () => {
+    const cart = await fetchCart();
+    setCartItems(cart);
+  };
 
   const deleteItemsFromCartAfterPurchase = async () => {
     const getCartItems = await fetchUsersCart();
@@ -99,12 +99,9 @@ export const CarvingProvider = ({ children }: CarvingProviderProps) => {
   };
 
   useEffect(() => {
-    fetchCartTest();
-    console.log(carvingArray);
-    // checkCart();
-    // fetchCarvings().then((data) => setCarvingArray(data));
+    checkCart();
+    fetchCarvings().then((data) => setCarvingArray(data));
   }, []);
-  console.log(carvingArray);
 
   return (
     <CarvingContext.Provider
